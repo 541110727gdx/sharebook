@@ -1,0 +1,36 @@
+<!--pages/shi/shi.wxml-->
+<scroll-view>
+  <video src='{{shi.talk_abouta_video}}'></video>
+<view class='shi'>
+  <view class='shi-con'>
+    <view>{{shi.title}}</view>
+    <view>{{shi.vice_title}}</view>
+     <view>{{times}}</view> 
+  </view>
+</view>
+<view class='liu' bindtap='goLiu'>
+  <view class='liu-con'>
+    看视频流量不够用？购买流量包
+    <image src='../../img/more.png'></image>
+  </view>
+</view>
+<view class='shi-img'>
+  <view class='shi-img-con'>
+    <image src='{{shi.details_img}}' data-src='{{shi.details_img}}' mode="widthFix" bindtap='previewImg'></image>
+  </view>
+</view>
+<view class='ping'>
+  <view class='ping-con'>
+    <view class='no'>不好听</view>
+    <view class='yiban'>一般般</view>
+    <view class='yes'>超好听</view>
+  </view>
+</view>
+</scroll-view>
+
+
+
+
+
+
+

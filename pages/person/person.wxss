@@ -1,0 +1,165 @@
+/* pages/person/person.wxss */
+page{
+  background: #f4f4f4;
+}
+.tou,.phone{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #fff;
+  margin: 20rpx 0;
+  color: #585858;
+  font-size: 14px;
+}
+.tou-con,.ni-con,.sex-con,.di-con,.birthday-con,.hang-con,.phone-con{
+  width: 690rpx;
+  margin: 0 auto;
+}
+.touxiang{
+  float: right;
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 50%;
+  margin-top: 16rpx;
+}
+.ni,.sex,.di,.birthday,.hang{
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-bottom: 1px solid #e8e8e8;
+  color: #585858;
+  font-size: 14px;
+  background: #fff;
+}
+.ni-con text{
+  float: right;
+}
+.sex-picker{
+  display: inline-block;
+  width: 80%;
+  height: 90rpx;
+  float: right;
+}
+.picker{
+  text-align: right;
+  padding-right: 16px;
+  background: url(http://b247.photo.store.qq.com/psb?/V10RQdNV1rZlgP/OMWEk4dgxoBN5oHWLPXFsMbWazYa6sb7AL9oxQqLpiY!/m/dDMBAAAAAAAAnull&bo=CgASAAAAAAADBzo!&rf=photolist&t=5) right center no-repeat;
+  background-size: 10rpx 18rpx;
+  color: #8f8f8f;
+}
+.hang-con input,.phone-con input{
+  display: block;
+  width: 580rpx;
+  height: 90rpx;
+  float: right;
+  text-align: right;
+  margin-right: 16px;
+  color: #8f8f8f;
+}
+.hang-con,.phone-con{
+  background: url(http://b247.photo.store.qq.com/psb?/V10RQdNV1rZlgP/OMWEk4dgxoBN5oHWLPXFsMbWazYa6sb7AL9oxQqLpiY!/m/dDMBAAAAAAAAnull&bo=CgASAAAAAAADBzo!&rf=photolist&t=5) right center no-repeat;
+  background-size: 10rpx 18rpx;
+}
+.phone-con input{
+  width: 500rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #8f8f8f;
+}
+.place{
+  color: #8f8f8f;
+}
+.bao{
+   width: 596rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  background: #5bc950;
+  margin: 40rpx auto 0;
+}
+.dis{
+  opacity: .5;
+}
+.zz{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.5);
+}
+.phone-num{
+  width: 680rpx;
+  height: 410rpx;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  margin-left: -340rpx;
+  background: #fff;
+  border-radius: 5px;
+  z-index: 999;
+}
+.mobile{
+  float:right;
+  margin-right:26rpx;
+  color:#8f8f8f;
+}
+.phone-num .phone-title{
+  width: 100%;
+  line-height: 90rpx;
+  text-align: center;
+}
+.phone-input{
+  width: 86%;
+  height: 70rpx;
+  margin: 0 auto 40rpx;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  padding-left: 10rpx;
+}
+.view-code{
+  width: 88%;
+  height: 70rpx;
+  margin: 0 auto 40rpx;
+}
+.code-input{
+  width: 55%;
+  height: 100%;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  float: left;
+  padding-left: 10rpx;
+}
+.view-code button{
+  float: right;
+  width: 40%;
+  line-height: 70rpx;
+  background: #5bc950;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+}
+.view-end{
+  width: 100%;
+  height: 90rpx;
+  border-top:1px solid #ccc;
+  line-height: 90rpx; 
+}
+.view-end text{
+  display: block;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+.view-end text:nth-child(1) {
+   float: left;
+   border-right: 1px solid #ccc;
+}
+.view-end text:nth-child(2) {
+   float: right;
+   color: #5bc950;
+}
+

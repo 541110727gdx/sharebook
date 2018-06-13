@@ -1,0 +1,92 @@
+page{
+   background: #f5f5f5; 
+}
+.slide-image{
+  width: 750rpx;
+  height: 300rpx;
+}
+.index{
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+.index-con{
+  width: 690rpx;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.list-title{
+  color: #292929;
+  font-size: 15px;
+  margin-top: 20rpx;
+  
+}
+.list-title navigator{
+  float: right;
+  color: #454545;
+  font-size: 12px;
+  background: url(http://b247.photo.store.qq.com/psb?/V10RQdNV1rZlgP/OMWEk4dgxoBN5oHWLPXFsMbWazYa6sb7AL9oxQqLpiY!/m/dDMBAAAAAAAAnull&bo=CgASAAAAAAADBzo!&rf=photolist&t=5) right center no-repeat;
+  background-size: 10rpx 18rpx;
+  padding-right: 18rpx;
+}
+.list-con{
+  width: 690rpx;
+  height: 130rpx;
+  margin: 0 auto;
+  border-bottom: 1px solid #e4e4e4;
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+}
+.list-con:nth-child(3n) {
+  border-bottom: none;
+}
+.list-con image{
+  width: 160rpx;
+  height: 120rpx;
+  border-radius: 5px;
+  float: left;
+  margin-right: 10px;
+}
+.list-con view{
+  margin-bottom: 10rpx;
+ 
+}
+.list-con view:nth-child(2) {
+  font-size: 14px;
+  color: #292929;
+}
+.list-con view:nth-child(3) {
+  font-size: 11px;
+  color: #878787;
+}
+.list-con view:nth-child(4) {
+  font-size: 11px;
+  color: #878787;
+}
+.price{
+  float: right;
+  color: #ff5c5c;
+  font-size: 14px;
+  font-weight: bolder;
+}
+.play{
+  position: fixed;
+  bottom: 55rpx;
+  right: 20rpx;
+  width: 90rpx;
+  height: 90rpx;
+  z-index: 999;
+}
+.play image{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+
+
+

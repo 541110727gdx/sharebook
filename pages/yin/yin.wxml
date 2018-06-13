@@ -1,0 +1,56 @@
+<!--pages/yin/yin.wxml-->
+<scroll-view>
+   <image class='banner' src='{{yin.title_img}}'></image> 
+  <view class='yin'>
+    <view class="yin-con">
+      <view class='yin-main'>
+        <text>{{curTime}}</text>
+            <slider backgroundColor='#d4d4d4' activeColor='#e6e6e6' block-size='20' selected-color='#6dd69b'
+            max='{{max}}'
+            value='{{sliderValue}}'
+            bindchange="hanleSliderChange"
+            ></slider>
+        <text class='sliderMax'>{{sliderMax}}</text>
+      </view>
+      <view class='yin-kong'>
+        <image class='pre' src='../../img/pre.png'></image>
+        <image class='play' bindtap='play' src='{{playImg}}'></image>
+        <image class='next' src='../../img/next.png'></image>
+      </view>
+    </view>
+    
+  </view>
+<view class='shi'>
+  <view class='shi-con'>
+    <view>{{yin.title_name}}</view>
+    <!-- <view>为什么是人类统治地球</view> -->
+    <view>{{time}}</view>
+  </view>
+</view>
+<view class='liu' bindtap='goLiu'>
+  <view class='liu-con'>
+    看视频流量不够用？购买流量包
+    <image src='../../img/more.png'></image>
+  </view>
+</view>
+<view class='shi-img'>
+  <view class='shi-img-con'>
+    <image src='{{yin.details_img}}' data-src='{{yin.details_img}}' mode="widthFix" bindtap='previewImg'></image>
+  </view>
+</view>
+<view class='ping'>
+  <view class='ping-con'>
+    <view class='no'>不好听</view>
+    <view class='yiban'>一般般</view>
+    <view class='yes'>超好听</view>
+  </view>
+</view>
+</scroll-view>
+
+
+
+
+
+
+
+

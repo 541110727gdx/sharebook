@@ -1,0 +1,30 @@
+<!--pages/opinion/opinion.wxml-->
+<view class='opi'>
+  <view class='opi-con'>
+    <view class="opi-title">请选择意见反馈类型</view>
+  </view>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" wx:for="{{items}}" wx:key="radio">
+      <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+  </radio-group>
+  <view class='opi-con'>
+    <view class="opi-title">请填写详细内容</view>
+      <textarea bindinput='textArea'/>
+  </view>
+</view>
+<view class="sub" bindtap='submit'>提交</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

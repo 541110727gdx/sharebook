@@ -1,0 +1,23 @@
+/* pages/zeng/zeng.wxss */
+image{
+  display: block;
+  width: 500rpx;
+  height: auto;
+  margin: 100rpx auto 0;
+}
+.title{
+  width: 100%;
+  text-align: center;
+  margin: 50rpx 0;
+}
+button{
+  width: 200rpx;
+  background: #50b047;
+  color: #fff;
+  font-size: 14px;
+}
+.name{
+  width: 690rpx;
+  margin: 10rpx auto 0;
+}
+

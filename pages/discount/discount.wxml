@@ -1,0 +1,68 @@
+<!--pages/discount/discount.wxml-->
+<view class='give'>
+  <view class='give-tab'>
+    <view bindtap='giveTab'><text class="{{select?'text-act':''}}">未使用</text></view>
+    <view bindtap='giveTab2'><text class="{{select2?'text-act':''}}">已使用</text></view>
+    <view bindtap='giveTab3'><text class="{{select3?'text-act':''}}">已过期</text></view>
+  </view>
+</view>
+<scroll-view hidden='{{!select}}'>
+  <view class="dis">
+      <block wx:for='{{dis.not_used}}' wx:key='hui'>
+    <view class='dis-con'>
+        <view class='youhui-main' bindtap='ling' data-id='{{item.id}}'>
+          <view class='youhui-con' data-id='{{item.id}}'>
+            <text class='you-name' data-id='{{item.id}}'>{{item.coupon_name}}</text>
+            <text class='you-time' data-id='{{item.id}}'>有效期至{{time[index]}}</text>
+          </view>
+          <view class='li' data-id='{{item.id}}'>
+            <view data-id='{{item.id}}'>立减{{item.denomination}}元</view>
+            <view  data-id='{{item.id}}' hidden='{{item.working_conditions == 0?true:false}}'>满{{item.working_condition}}元可用</view>
+          </view>
+        </view>
+    </view>
+      </block>
+  </view>
+</scroll-view>
+<scroll-view hidden='{{!select2}}'>
+  <view class="dis">
+      <block wx:for='{{dis.used}}' wx:key='hui'>
+    <view class='dis-con'>
+        <view class='youhui-main' bindtap='ling' data-id='{{item.id}}'>
+          <view class='youhui-con' data-id='{{item.id}}'>
+            <text class='you-name' data-id='{{item.id}}'>{{item.coupon_name}}</text>
+            <text class='you-time' data-id='{{item.id}}'>有效期至{{time[index]}}</text>
+          </view>
+          <view class='li' data-id='{{item.id}}'>
+            <view data-id='{{item.id}}'>立减{{item.denomination}}元</view>
+            <view  data-id='{{item.id}}' hidden='{{item.working_conditions == 0?true:false}}'>满{{item.working_condition}}元可用</view>
+          </view>
+        </view>
+    </view>
+      </block>
+  </view>
+</scroll-view>
+<scroll-view hidden='{{!select3}}'>
+  <view class="dis">
+      <block wx:for='{{dis.expire}}' wx:key='hui'>
+    <view class='dis-con'>
+        <view class='youhui-main guoqi' bindtap='ling' data-id='{{item.id}}'>
+          <view class='youhui-con' data-id='{{item.id}}'>
+            <text class='you-name' data-id='{{item.id}}'>{{item.coupon_name}}</text>
+            <text class='you-time' data-id='{{item.id}}'>有效期至{{time[index]}}</text>
+          </view>
+          <view class='li' data-id='{{item.id}}'>
+            <view data-id='{{item.id}}'>立减{{item.denomination}}元</view>
+            <view  data-id='{{item.id}}' hidden='{{item.working_conditions == 0?true:false}}'>满{{item.working_condition}}元可用</view>
+          </view>
+        </view>
+    </view>
+      </block>
+  </view>
+</scroll-view>
+
+
+
+
+
+

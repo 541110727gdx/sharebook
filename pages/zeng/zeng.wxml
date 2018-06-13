@@ -1,0 +1,9 @@
+<!--pages/zeng/zeng.wxml-->
+<view class='name'>{{name}}赠送给你</view>
+<image mode="widthFix" src='../../img/banner.png'></image>
+<view class='title'>5555555</view>
+<button bindcap='btnClick'>{{btnValue}}</button>
+
+
+
+

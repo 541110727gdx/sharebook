@@ -1,0 +1,63 @@
+/* pages/opinion/opinion.wxss */
+page{
+  background: #f8f8f8;
+}
+.opi{
+  width: 100%;
+}
+.opi-con{
+  width: 690rpx;
+  margin: 0 auto;
+}
+.opi-title{
+  color: #666666;
+  font-size: 14px;
+  line-height: 90rpx;
+}
+.radio-group{
+  background: #fff;
+}
+.radio{
+  width: 690rpx;
+  padding: 0 30rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  display: block;
+  position: relative;
+  color: #333333;
+  font-size: 14px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.radio radio{
+  display: block;
+  width: 26rpx;
+  height: 26rpx;
+  position: absolute;
+  top: 50%;
+  right: 50rpx;
+  margin-top: -50rpx;
+}
+textarea{
+  width: 100%;
+  background: #fff;
+  height: 280rpx;
+}
+.sub{
+  width: 596rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  background: #5bc950;
+  margin: 40rpx auto 0;
+}
+
+
+
+
+
+
+
+
+

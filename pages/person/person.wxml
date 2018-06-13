@@ -1,0 +1,87 @@
+<!--pages/person/person.wxml-->
+<!--头像  -->
+<view class="tou">
+  <view class="tou-con">
+    头像
+    <image class="touxiang" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  </view>
+</view>
+<!--昵称  -->
+<view class='ni'>
+  <view class="ni-con">
+    昵称
+    <text>{{userInfo.nickName}}</text>
+  </view>
+</view>
+<!--性别  -->
+<view class='sex'>
+  <view class='sex-con'>
+  性别
+    <picker class="sex-picker" bindchange="bindSexChange" value="{{sex}}" range="{{sexList}}">
+      <view class="picker">
+        {{sex}}
+      </view>
+    </picker>
+  </view>
+</view>
+<!--地区  -->
+<view class="di">
+  <view class="di-con">
+    地区
+    <picker mode="region" class="sex-picker" bindchange="bindCityChange" value="{{city}}">
+      <view class="picker">
+        {{city}}
+      </view>
+    </picker>
+  </view>
+</view>
+<!--生日  -->
+<view class="birthday">
+  <view class="birthday-con">
+    生日
+    <picker class="sex-picker" mode="date" value="{{date}}" start="1949-01-01" end="2018-12-31" bindchange="bindDateChange">
+      <view class="picker">
+        {{date}}
+      </view>
+    </picker>
+  </view>
+</view>
+<!--行业  -->
+<view class='hang'>
+  <view class="hang-con">
+    行业
+    <input bindinput="bindHangInput" placeholder="未设置" value="{{hangValue}}" placeholder-class="place"/>
+  </view>
+</view>
+<!--职位  -->
+<view class='hang'>
+  <view class="hang-con">
+    职位
+    <input bindinput="bindZhiInput" placeholder="未设置" value="{{zhiValue}}" placeholder-class="place"/>
+  </view>
+</view>
+<!--手机号  -->
+<view class='phone' bindtap='phone'>
+  <view class="phone-con">
+    手机号
+    <!-- <input bindinput="bindPhoneInput" placeholder="未设置" type='number' placeholder-class="place"/> -->
+    <text class='mobile'>{{phone}}</text>
+  </view>
+</view>
+<view class='bao {{ifBao}}' data-class='{{ifBao}}' bindtap='save'>保存</view>
+<view class='zz' hidden='{{ifNum}}'></view>
+<view class='phone-num' hidden='{{ifNum}}'>
+  <view class='phone-title'>绑定手机</view>
+  <input class='phone-input' type='number' bindinput="phoneInput" disabled='{{phoneDis}}' placeholder='请输入手机号'></input>
+  <view class='view-code'>
+    <input class='code-input' type='number' bindinput="codeInput" placeholder='请输入验证码'></input>
+    <button bindtap='getCode' disabled="{{isdisable}}">{{btnInfo}}</button>
+  </view>
+  <view class='view-end'>
+    <text bindtap='cancel'>取消</text>
+    <text bindtap='sure'>确定</text>
+  </view>
+</view>
+
+
+

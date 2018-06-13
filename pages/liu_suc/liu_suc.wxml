@@ -1,0 +1,16 @@
+<!--pages/liu_suc/liu_suc.wxml-->
+<image src='../../img/success.png'></image>
+<view>请稍候，</view>
+<view>等待充值由分享读书为您提供的流量数据包</view>
+<button class='jixu'>继续充值</button>
+<button class='fan'>返回播放页</button>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+<!--pages/liu/liu.wxml-->
+<input type='number' placeholder='请输入手机号' bindblur='bindPhone'></input>
+<view class='liu'>
+  <view class='liu-con'>
+    <text class='liu-con-title'>全国流量，即时生效，月底生效</text>
+    <view class='liu-main'>
+       <block wx:for="{{liu}}" wx:key="liu"> 
+          <view class="{{key==index?'act':''}}" bindtap='changColor' data-index='{{index}}'>
+            <text class='name' data-index='{{index}}'>{{item.name}}</text>
+            <text class='xian' data-index='{{index}}'>现价:{{item.price}}元</text>
+            <text class='yuan' data-index='{{index}}'>原价:{{item.d_price}}元</text>
+          </view>
+       </block> 
+    </view>
+  </view>
+</view>
+<view class='gou' bindtap='gou'>立即购买</view>
+
+
+
+
+
+
+

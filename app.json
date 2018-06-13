@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/give/give",
+    "pages/zeng/zeng",
+    "pages/choose/choose",
+    "pages/opinion/opinion",
+    "pages/detail/detail",
+    "pages/liu/liu",
+    "pages/login/login",
+    "pages/yin/yin",
+    "pages/person/person",
+    "pages/liu_suc/liu_suc",
+    "pages/shi/shi",
+    "pages/my/my",
+    "pages/discount/discount",
+    "pages/yigou/yigou",
+    "pages/msg/msg",
+    "pages/list/list",
+    "pages/out/out"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "分享读书",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#6dd69b",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "img/index-p.png",
+        "iconPath": "img/index.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "img/msg-p.png",
+        "iconPath": "img/msg.png",
+        "pagePath": "pages/msg/msg",
+        "text": "消息"
+      },
+      {
+        "selectedIconPath": "img/my-p.png",
+        "iconPath": "img/my.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  }
+}

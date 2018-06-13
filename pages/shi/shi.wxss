@@ -1,0 +1,101 @@
+/* pages/shi/shi.wxss */
+page{
+  background: #f1f1f1;
+}
+video{
+  width: 100%;
+  height: 427rpx;
+}
+.shi{
+  width: 100%;
+  height: 186rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.shi-con{
+  width: 690rpx;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.shi-con view:nth-child(1) {
+  color: #292929;
+  font-size: 15px;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+}
+.shi-con view:nth-child(2) {
+  color: #292929;
+  font-size: 12px;
+  margin-bottom: 10rpx;
+}
+.shi-con view:nth-child(3) {
+  color: #8e8e8e;
+  font-size: 12px;
+}
+.liu{
+  width: 100%;
+  height: 94rpx;
+  line-height: 94rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.liu-con{
+  width: 690rpx;
+  height: 100%;
+  margin: 0 auto;
+  color: #636363;
+  font-size: 12px;
+}
+.liu-con image{
+ width: 10rpx;
+  height: 18rpx;
+  margin-top: 36rpx;
+  float: right;
+}
+.shi-img{
+  width: 100%;
+  background: #fff;
+  padding: 20rpx 0;
+  margin-bottom: 20rpx;
+}
+.shi-img-con{
+  width: 690rpx;
+  margin: 0 auto;
+}
+.shi-img-con image{
+  width: 100%;
+  height: auto;
+}
+.ping{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.ping-con{
+  width: 690rpx;
+  height: 100%;
+  margin: 0 auto;
+}
+.ping-con view{
+  float: left;
+  color: #5b5b5b;
+  font-size: 12px;
+  width: 140rpx;
+  padding-left: 90rpx;
+  text-align: center;
+}
+.no{
+  background: url(http://b247.photo.store.qq.com/psb?/V10RQdNV1rZlgP/GHNRwPdqCxHsukVbDvjxJcYw6GB2jazdvfF0g2Xl.6s!/m/dDABAAAAAAAAnull&bo=KAAoAAAAAAADByI!&rf=photolist&t=5) 30rpx center no-repeat;
+  background-size: 40rpx 40rpx;
+}
+.yiban{
+  background: url(http://b247.photo.store.qq.com/psb?/V10RQdNV1rZlgP/JAj7AqmhhR7hLsiTkuQMUneQJNNTds3h7DNJW70Uc7s!/m/dAgBAAAAAAAAnull&bo=KAAoAAAAAAADByI!&rf=photolist&t=5) 30rpx center no-repeat;
+  background-size: 40rpx 40rpx;
+}
+.yes{
+  background: url(http://b247.photo.store.qq.com/psb?/V10RQdNV1rZlgP/MsW54rZUMLhvDkz.v.aE82zBadtihE*fP01AcCdXi9I!/m/dDMBAAAAAAAAnull&bo=KAAoAAAAAAADByI!&rf=photolist&t=5) 30rpx center no-repeat;
+  background-size: 40rpx 40rpx;
+}

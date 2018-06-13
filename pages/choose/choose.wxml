@@ -1,0 +1,18 @@
+<!--pages/choose/choose.wxml-->
+<view class='youhui'>
+   <radio-group class="radio-group" bindchange="radioChange"> 
+     <label class="radio" wx:for="{{you}}" wx:key="radio"> 
+      <view class='youhui-main'>
+        <view class='youhui-con {{item.show == true?"bu":""}}'>
+          <text class='you-name' style=''>{{item.coupon_name}}</text>
+          <text class='you-time' wx:if='{{!item.show}}'>有效期至{{time[index]}}</text>
+        </view>
+        <view class='li' data-con='{{item.working_condition}}'>
+          <view wx:if='{{!item.show}}'>立减{{item.denomination}}元</view>
+          <view  wx:if='{{!item.show}}'>满{{item.working_condition}}元可用</view>
+        </view>
+        <radio value="{{item.id}}+{{item.coupon_id}}+{{item.denomination}}+{{item.working_condition}}+{{item.coupon_name}} " checked="{{item.checked}}" data-con='22'/>
+      </view>
+     </label>
+   </radio-group> 
+</view>

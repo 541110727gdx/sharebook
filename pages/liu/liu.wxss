@@ -1,0 +1,78 @@
+/* pages/liu/liu.wxss */
+page{
+  background: #f8f8f8;
+}
+input{
+  width: 100%;
+  height: 146rpx;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
+  padding-left: 22.5rpx;
+  background: #fff;
+}
+.liu{
+  width: 100%;
+}
+.liu-con{
+  width: 690rpx;
+  margin: 0 auto;
+}
+.liu-con-title{
+  line-height: 86rpx;
+  color: #707070;
+  font-size: 14px;
+}
+.liu-main{
+  width: 100%;
+}
+.liu-main view{
+  width: 220rpx;
+  height: 300rpx;
+  border-radius: 5px;
+  display: inline-block;
+  background: #fff;
+   box-sizing: border-box; 
+  padding: 10rpx;
+  text-align: center;
+   margin-bottom: 20rpx;
+}
+.liu-main view:nth-child(3n-1) {
+  margin: 0 10rpx;
+}
+.name{
+  display: inline-block;
+  height: 100rpx;
+  color: #2f2f2f;
+  font-size: 16px;
+  line-height: 100rpx;
+  border-bottom: 1px solid #eee;
+}
+.xian{
+  color: #64cd69;
+  font-size: 12px;
+  display: inline-block;
+  line-height: 100rpx;
+  width: 100%;
+}
+.yuan{
+  color: #9e9e9e;
+  font-size: 12px;
+  display: inline-block;
+  line-height: 50rpx;
+  width: 100%;
+  text-decoration: line-through;
+}
+.act{
+  border: 2px solid #5bc950;
+}
+.gou{
+  width: 594rpx;
+  height: 88rpx;
+  border-radius: 5px;
+  color: #fff;
+  background: #5bc950;
+  line-height: 88rpx;
+  text-align: center;
+  margin: 30rpx auto 0;
+}
+

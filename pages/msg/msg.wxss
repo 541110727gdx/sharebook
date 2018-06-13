@@ -1,0 +1,50 @@
+/* pages/msg/msg.wxss */
+page{
+  background: #f0f0f0;
+}
+.msg{
+  width: 100%;
+  background: #fff;
+}
+.msg-con{
+  width: 690rpx;
+  margin: 0 auto; 
+}
+.msg-list{
+  width: 100%;
+  padding: 30rpx 0;
+  border-bottom: 1px solid #e8e8e8;
+}
+.msg-list:last-child{
+  border-bottom: none;
+}
+.msg-list image{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  float: left;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+.msg-list view:nth-child(2){
+  font-size: 14px;
+  color: #282d33;
+  margin-bottom: 10rpx;
+}
+.msg-list view:nth-child(3){
+  width: 100%;
+  font-size: 12px;
+  color: #878787;
+}
+.text1{
+  width: 60%;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.text2{
+  float: right;
+}
+
+

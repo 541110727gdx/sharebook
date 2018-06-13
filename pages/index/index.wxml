@@ -1,0 +1,77 @@
+<!-- <image src='../../img/banner.png'></image> -->
+<scroll-view>
+<!--轮播  -->
+  <swiper indicator-dots="true" autoplay="false" interval="5000" duration="1000" indicator-active-color='#007aff'>
+   <block wx:for="{{banner}}" wx:key="items"> 
+    <swiper-item>
+      <image src="{{item.img_url}}" class="slide-image" data-id="{{item.jump_type}}" data-care="{{item.carefully_id}}"  bindtap='bannerJump' data-int="{{item.intensive_id}}" data-url="{{item.url}}"/>
+     </swiper-item> 
+   </block> 
+</swiper>
+<!--大咖精读  -->
+<view class='index'>
+  <view class='index-con'>
+    <view class="list-title">
+      大咖精读
+      <navigator url="../list/list?title=大咖精读">更多</navigator>
+    </view>
+  </view>
+  <view class="list">
+    <block wx:for="{{carefully}}" wx:for-item="care" wx:key="care">
+    <view wx:if='{{index < 3}}' class='list-con' data-id='{{care.id}}' data-type='1' bindtap='goDetail'>
+      <image data-id='{{care.id}}' data-type='1'  src='{{care.recommend_img}}'></image>
+      <view data-id='{{care.id}}' data-type='1' >{{care.title}}</view>
+      <view data-id='{{care.id}}' data-type='1' >{{care.vice_title}}</view>
+      <view data-id='{{care.id}}' data-type='1' >已更新<text>{{care.updates}}</text>期 | <text>{{care.purchase_number}}</text>人购买
+        <text data-id='{{care.id}}' data-type='1' class="price">￥<text>{{care.price}}</text></text>
+      </view>
+    </view>
+    </block>
+  </view>
+</view>
+<!-- 学霸笔记   -->
+<view class='index'>
+  <view class='index-con'>
+    <view class="list-title">
+      学霸笔记
+      <navigator url="../list/list?title=学霸笔记">更多</navigator>
+    </view>
+  </view>
+  <view class="list">
+    <block wx:for="{{intensive}}" wx:for-item="int" wx:key="int">
+    <view wx:if='{{index < 3}}' class='list-con' data-id='{{int.id}}' data-type='2' bindtap='goDetail'>
+      <image data-id='{{int.id}}' data-type='2'  src='{{int.recommend_img}}'></image>
+      <view data-id='{{int.id}}' data-type='2' >{{int.title}}</view>
+      <view data-id='{{int.id}}' data-type='2' >{{int.vice_title}}</view>
+        <view>
+        <text data-id='{{int.id}}' data-type='2'  class="price">￥<text>{{int.price}}</text></text>
+      </view> 
+    </view>
+    </block>
+  </view>
+</view>
+<!--有声读物  -->
+<view class='index' hidden='true'>
+  <view class='index-con'>
+    <view class="list-title">
+      有声读物
+      <navigator url="../list/list?title=有声读物">更多</navigator>
+    </view>
+  </view>
+  <view class="list">
+    <block wx:for="{{arr}}" wx:for-item="list" wx:key="list">
+    <view class='list-con'>
+      <image src='{{list.src}}'></image>
+      <view>{{list.title}}</view>
+      <view>{{list.dec}}</view>
+      <view>已更新<text>9</text>期 | <text>55</text>人购买
+        <text class="price">￥<text>49.9</text></text>
+      </view>
+    </view>
+    </block>
+  </view>
+</view>
+</scroll-view>
+<view class="play">
+  <image src='../../img/ifplay.png'></image>
+</view>

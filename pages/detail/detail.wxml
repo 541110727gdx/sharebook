@@ -1,0 +1,188 @@
+<!--pages/detail/detail.wxml-->
+  <scroll-view> 
+  <image class="img-detail" src='{{detail.recommend_img}}'></image>
+  <view class='detail'>
+    <view class='detail-con'>
+      <view class='detail-title'>{{detail.title}}
+        <image bindtap='zengSong'  data-statu="open" src='../../img/send.png'></image>
+      </view>
+      <view class='detail-dec'>
+        {{detail.vice_title}}
+        <text bindtap='zengSong' data-statu="open">送好友</text>
+      </view>
+      <view class="gou" hidden='{{ifBi}}'>
+        已更新<text>{{detail.updates}}</text>期 | <text>{{detail.purchase_number}}</text>人购买
+        <image src='../../img/send.png'></image>
+        <image src='../../img/send.png'></image>
+        <image src='../../img/send.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='you' hidden='{{youHidden}}'>
+    <view class='you-con' bindtap="youHui" data-statu="open">
+      领取优惠券
+      <text class='man'></text>
+      <text class='zhang'>{{timeArr.length}}张</text>
+    </view>
+  </view>
+  
+  <view class='detail-tab' hidden='{{ifBi}}'>
+    <view class='detail-tab-con'>
+      <view bindtap='giveTab'><text class="{{select?'text-act':''}}">详情</text></view>
+      <view bindtap='giveTab2'><text class="{{select2?'text-act':''}}">目录</text></view>
+    </view>
+  </view>
+  <view class="detail-img">
+    <view class='detail-img-con'>
+      <!--详情  -->
+      <image hidden='{{!select}}' src='{{detail.details_img}}' data-src='{{detail.details_img}}' mode="widthFix" bindtap='previewImg'></image>
+    </view>
+  </view>
+  <!--目录  -->
+  <view class='mulu' hidden='{{!select2}}'>
+    <view class='mulu-main' bindtap='goShi' data-id='{{detail.id}}'>
+        <view data-id='{{detail.id}}' class='mulu-con'>
+          <image data-id='{{detail.id}}' src='{{detail.recommend_video}}'></image>
+          <view data-id='{{detail.id}}'>开讲视频</view>
+          <view data-id='{{detail.id}}'>
+            <text data-id='{{detail.id}}'>{{time_top}}</text>
+            <text data-id='{{detail.id}}' class='green'>试看</text>
+          </view> 
+        </view>
+      </view>
+      <!--导读  -->
+      <view class='mulu-main' bindtap='goYin' data-id='{{detail.id}}'>
+        <view class='mulu-con' data-id='{{detail.id}}'>
+          <image  data-id='{{detail.id}}'src='{{detail.guide_reading_img}}'></image>
+          <view data-id='{{detail.id}}'>导读</view>
+          <view data-id='{{detail.id}}'>
+            <text data-id='{{detail.id}}'>{{time_top}}</text>
+            <text data-id='{{detail.id}}' class='green'>试听</text>
+          </view> 
+        </view>
+      </view>
+      <!--子集  -->
+    <block wx:for="{{care_child}}" wx:for-item="child" wx:key="child">
+      <view class='mulu-main' bindtap='goYin' data-id='{{child.id}}'>
+        <view class='mulu-con' data-id='{{child.id}}'>
+          <image src='{{child.title_img}}' data-id='{{child.id}}'></image>
+          <view data-id='{{child.id}}'>{{child.title_name}}</view>
+            <text data-id='{{child.id}}' class='green'>试听</text> 
+          <view>
+            <text data-id='{{child.id}}'>{{time[index]}}</text>
+          </view> 
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class='cai'>
+    <view class='cai-con'>
+      <view class='cai-title'>猜你喜欢</view>
+        <image src='../../img/banner.png'></image>
+        <view>5分钟读懂《进化心理学》</view>
+        <view>你所谓的选择是被进化操纵的</view>
+        <view>已更新1期 | 34人购买
+          <text>￥49.9</text>
+        </view>
+    </view> 
+  </view>
+  <view class='detail-end'>
+    <view class='detail-end-con'>
+      <view>￥{{detail.price}}</view>
+      <view>解锁所有9节课程</view>
+    </view>
+    
+    <view class="buy" bindtap='gouMai' data-statu="open">
+      立即购买
+    </view>
+  </view>
+ </scroll-view> 
+
+<!--蒙层  -->
+<view class="drawer_screen" bindtap="youHui" data-statu="close" wx:if="{{showYou}}"></view> 
+<view class="drawer_screen" bindtap="gouMai" data-statu="close" wx:if="{{showMai}}"></view> 
+<view class="drawer_screen" bindtap="zengSong" data-statu="close" wx:if="{{showZeng}}"></view> 
+ <!--优惠券  -->
+ <view class='hui' animation="{{animationData}}" wx:if="{{showYou}}">
+  <view class='hui-con'>
+    <view class='hui-title'>领取优惠券
+      <image src='../../img/close.png' bindtap="youHui" data-statu="close"></image>
+    </view>
+  </view>
+  <view class='youhui'>
+  <!--优惠券循环  -->
+  <scroll-view>
+    <block wx:for='{{coupon}}' wx:key='hui'>
+      <view class='youhui-main' bindtap='ling' data-id='{{item.id}}'>
+        <view class='youhui-con' data-id='{{item.id}}'>
+          <text class='you-name' data-id='{{item.id}}'>{{item.coupon_name}}</text>
+          <text class='you-time' data-id='{{item.id}}'>有效期至{{timeArr[index]}}</text>
+        </view>
+        <view class='li' data-id='{{item.id}}'>
+          <view data-id='{{item.id}}'>立减{{item.denomination}}元</view>
+          <view  data-id='{{item.id}}' hidden='{{item.working_conditions == 0?true:false}}'>满{{item.working_condition}}元可用</view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  </view>
+ </view>
+<!--购买  -->
+ <view class='hui mai' animation="{{animationData}}" wx:if="{{showMai}}">
+  <view class='hui-main'>
+    <view class='hui-con-title'>
+      {{detail.title}}
+    </view>
+  </view>
+  <view class='hui-main'>
+    <view class='hui-con-main' bindtap='goChoose'>
+      选择优惠券
+      <text>{{name}}</text>
+    </view>
+  </view>
+  <view class='hui-main'>
+    <view class='hui-con-main'>
+      待支付金额
+      <text class='price'>￥{{priceGou}}</text>
+    </view>
+  </view>
+  <view class="zhifu" catchtap='sureMai'>确认支付</view>
+ </view>
+<!--赠送好友  -->
+<view class='zeng' animation="{{animationData}}" wx:if="{{showZeng}}">
+  <view class='hui-main'>
+    <view class='hui-con-title'>
+      {{detail.title}}
+    </view>
+  </view>
+  <view class='hui-main'>
+    <view class='hui-con-main'>
+      购买数量
+      <view class="stepper">  
+          <!-- 减号 -->  
+          <text class="{{minusStatus}}" bindtap="bindMinus">-</text>  
+          <!-- 数值 -->  
+          <input type="number" bindchange="bindManual" maxlength='3' value="{{num}}"/>  
+          <!-- 加号 -->  
+          <text class="normal" bindtap="bindPlus">+</text>  
+      </view>  
+    </view>
+  </view>
+  <view class='hui-main'>
+    <view class='hui-con-main'>
+      待支付金额
+      <text class='price'>￥{{price}}</text>
+    </view>
+  </view>
+  <view class="zhifu">确认支付</view>
+</view>
+
+
+
+
+
+
+
+
+

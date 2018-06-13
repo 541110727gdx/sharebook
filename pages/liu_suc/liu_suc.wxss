@@ -1,0 +1,36 @@
+/* pages/liu_suc/liu_suc.wxss */
+image{
+  width: 128rpx;
+  height: 128rpx;
+  display: block;
+  margin: 100rpx auto 0;
+}
+view{
+  color: #646464;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 30rpx;
+}
+.jixu{
+  width:600rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  color: #5bc950;
+  border: 1px solid #5bc950;
+  margin: 60rpx auto 30rpx;
+  background: #fff;
+}
+.fan{
+  width:600rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  margin: 50rpx auto 40rpx;
+  background: #5bc950;
+  color: #fff;
+}
+
+
+
+

@@ -1,0 +1,16 @@
+<!--pages/list/list.wxml-->
+<scroll-view>
+  <view class="list">
+    <block wx:for="{{arr}}" wx:for-item="list" wx:key="list">
+    <view class='list-con' bindtap='goDetail' data-class='{{type}}' data-id='{{list.id}}'>
+      <image src='{{list.recommend_img}}' data-class='{{type}}' data-id='{{list.id}}'></image>
+      <view data-class='{{type}}' data-id='{{list.id}}'>{{list.title}}</view>
+      <view data-class='{{type}}' data-id='{{list.id}}'>{{list.vice_title}}</view>
+      <view hidden='{{ifInt}}' data-class='{{type}}' data-id='{{list.id}}'>已更新<text>{{list.updates}}</text>期 | <text>{{list.purchase_number}}</text>人购买
+        <text class="price" data-class='{{type}}' data-id='{{list.id}}'>￥<text>{{list.price}}</text></text>
+      </view>
+    </view>
+    </block>
+  </view>
+</scroll-view>
+
