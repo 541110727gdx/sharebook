@@ -7,7 +7,8 @@ Page({
   data: {
     arr: [],
     ifInt:false,
-    type:''
+    type:'',
+    hiddenLoading:false
   },
 
   /**
@@ -27,13 +28,15 @@ Page({
         if (options.title == '大咖精读') {
           that.setData({
             arr: res.data.carefully,
-            type: '1'
+            type: '1',
+            hiddenLoading: true
           })
         } else {
           that.setData({
             arr: res.data.intensive,
             ifInt:true,
-            type:'2'
+            type:'2',
+            hiddenLoading:true
           })
         }
       }

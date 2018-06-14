@@ -9,7 +9,7 @@ page{
 }
 .yigou-con{
   width: 690rpx;
-  height: 170rpx;
+  height: 130rpx;
   margin: 0 auto;
   padding: 30rpx 0;
 }

@@ -29,23 +29,28 @@ Page({
     working_condition: '',
     name:'不使用优惠券',
     ifBi:false,
-    jump_type:''
+    jump_type:'',
+    hiddenLoading:false,
+    status:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.setData({
       id:options.id,
-      type_num:options.type
+      type_num:options.type,
     })
     var that = this;
+    // console.log(wx.getStorageSync('openId'))
     wx.request({
       url: 'https://kip.sharetimes.cn/interface/details',
       data:{
         id:options.id,
-        type_num:options.type
+        type_num:options.type,
+        openid:wx.getStorageSync('openId')
       },
       header: {
         'content-type': 'application/json'
@@ -60,7 +65,9 @@ Page({
             price: res.data.carefully[0].price,
             priceGou: res.data.carefully[0].price,
             coupon: res.data.coupon,
-            jump_type:1
+            jump_type:1,
+            hiddenLoading:true,
+            status: res.data.status
           })
           var timeList = []
           var timeArr = []//优惠券结束时间
@@ -97,7 +104,9 @@ Page({
             priceGou: res.data.intensive[0].price,
             coupon: res.data.coupon,
             ifBi:true,
-            jump_type: 2
+            jump_type: 2,
+            hiddenLoading: true,
+            status: res.data.status
           })
           var timeList = []
           var timeArr = []//优惠券结束时间
@@ -149,12 +158,38 @@ Page({
     this.you(currentStatu)
   },
   gouMai: function (e) {
-    var currentStatu = e.currentTarget.dataset.statu;
-    this.mai(currentStatu)
+    wx.getSetting({
+      success: res => {
+        // console.log(res);
+        if (res.authSetting['scope.userInfo']) {
+          var currentStatu = e.currentTarget.dataset.statu;
+          this.mai(currentStatu)
+        } else {
+          //未授权 提示用户授权
+          wx.navigateTo({
+            url: '../login/login',
+          })
+        }
+      }
+    })
+    
   },
   zengSong: function (e) {
-    var currentStatu = e.currentTarget.dataset.statu;
-    this.zeng(currentStatu)
+    wx.getSetting({
+      success: res => {
+        // console.log(res);
+        if (res.authSetting['scope.userInfo']) {
+          var currentStatu = e.currentTarget.dataset.statu;
+          this.zeng(currentStatu)
+        } else {
+          //未授权 提示用户授权
+          wx.navigateTo({
+            url: '../login/login',
+          })
+        }
+      }
+    })
+    
   },
   you: function (currentStatu) {//优惠券
     var animation = wx.createAnimation({
@@ -319,6 +354,50 @@ Page({
       urls: [e.target.dataset.src] // 需要预览的图片http链接列表
     })
   },
+  sureZeng:function(){//确认赠送购买
+    var that = this;
+    wx.getSetting({
+      success: res => {
+        // console.log(res);
+        if (res.authSetting['scope.userInfo']) {
+          wx.request({
+            url: 'https://kip.sharetimes.cn/interface/push-order',
+            data: {
+              openid: wx.getStorageSync('openId'),
+              price: 1,
+              jump_type: that.data.jump_type,
+              id: that.data.detail.id,
+              hui_id: that.data.coupon_id,
+              order_type:1
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function (res) {
+              console.log(res);
+              wx.requestPayment({
+                timeStamp: res.data.timeStamp,
+                nonceStr: res.data.nonceStr,
+                package: res.data.package,
+                signType: 'MD5',
+                paySign: res.data.paySign,
+                success: function (res) {
+                  wx.redirectTo({
+                    url: '../give/give'
+                  })
+                }
+              })
+            }
+          })
+        } else {
+          //未授权 提示用户授权
+          wx.navigateTo({
+            url: '../login/login',
+          })
+        }
+      }
+    })
+  }, 
   sureMai:function() {//确认支付
   var that = this;
     // 获取用户信息
@@ -346,6 +425,11 @@ Page({
                 package: res.data.package,
                 signType: 'MD5',
                 paySign: res.data.paySign,
+                success:function(res) {
+                  wx.redirectTo({
+                    url:'../detail/detail?id='+that.data.id+'&type='+that.data.type_num
+                  })
+                }
               })
             }
           })
@@ -363,10 +447,31 @@ Page({
       url: '../shi/shi?id=' + e.target.dataset.id + '&type=1',
     })
   },
-  goYin:function(e) {
+  goDao:function(e) {
+    var that = this;
     wx.navigateTo({
-      url: '../yin/yin?id=' + e.target.dataset.id+'&type=2',
+      url: '../yin/yin?id=' + e.target.dataset.id + '&type=2' + '&parId=' + that.data.id,
     })
+  },
+  goYin:function(e) {
+    var that = this;
+    console.log(e.target.dataset.index)
+    if (e.target.dataset.index == 0 && that.data.status == 0) {//没购买且是第一个子集
+      wx.navigateTo({
+        url: '../yin/yin?id=' + e.target.dataset.id + '&type=2'+'&parId='+that.data.id,
+      })
+    } else if (e.target.dataset.index !== 0 && that.data.status == 0){
+      wx.showToast({
+        title: '请先购买',
+        icon: 'none',
+        duration: 1500
+      })
+    } else if (that.data.status == 1) {
+      wx.navigateTo({
+        url: '../yin/yin?id=' + e.target.dataset.id + '&type=2' + '&parId=' + that.data.id,
+      })
+    } 
+    
   },
   goChoose:function(e) {
     wx.navigateTo({

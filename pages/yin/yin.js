@@ -15,7 +15,12 @@ Page({
     sliderValue:'',
     playImg:'../../img/paused.png',
     isMovingSlider:false,
-    max:''
+    max:'',
+    hiddenLoading:false,
+    yinId:'',
+    pre:'../../img/pre_hui.png',
+    next:'../../img/next_hui.png',
+    parId:''
   },
 
   /**
@@ -23,12 +28,29 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    that.setData({
+      yinId:options.id,
+      parId: options.parId
+    })
+    // wx.request({
+    //   url: 'https://kip.sharetimes.cn/interface/get-audio',
+    //   data:{
+    //     child_id:options.id,
+    //     parent_id:options.parId
+    //   },
+    //   header: {
+    //     'content-type': 'application/json'
+    //   },
+    //   success:function(res) {
+    //     console.log(res)
+    //   }
+    // })
     wx.request({
       url: 'https://kip.sharetimes.cn/interface/audio-read',
       method: 'GET',
       data: {
         id:options.id,
-        type_num:options.type
+        type_num:options.type,
       },
       header: {
         'content-type': 'application/json'
@@ -42,7 +64,8 @@ Page({
           yin:res.data,
           sliderMax:Miao,
           time:Time,
-          max:Max
+          max:Max,
+          hiddenLoading:true
         })
         
         // backgroundAudioManager.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46'
@@ -50,6 +73,7 @@ Page({
         backgroundAudioManager.title = that.data.yin.title_name
         backgroundAudioManager.coverImgUrl = that.data.yin.title_img
         backgroundAudioManager.play();//音频播放
+        app.globalData.backId = that.data.yinId
         backgroundAudioManager.onTimeUpdate(function () {
           if (!that.data.isMovingSlider) {
             that.setData({

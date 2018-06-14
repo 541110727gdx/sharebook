@@ -7,7 +7,8 @@ Page({
    */
   data: {
     shi:[],
-    times:''
+    times:'',
+    hiddenLoading:false
   },
 
   /**
@@ -28,7 +29,8 @@ Page({
         var times = time.formatTimeTwo(res.data[0].created, 'Y-M-D');
         that.setData({
           shi:res.data[0],
-          times:times
+          times:times,
+          hiddenLoading:true
         })
       }
     })

@@ -1,3 +1,4 @@
+const app = getApp();
 Page({
   data:{
     banner:[],
@@ -5,7 +6,8 @@ Page({
       
     ],
     carefully:[],
-    intensive:[]
+    intensive:[],
+    hiddenLoading:false
   },
   onLoad: function (options) {
     var that = this;
@@ -28,7 +30,8 @@ Page({
       success: function (res) {
         that.setData({
           carefully: res.data.carefully,
-          intensive: res.data.intensive
+          intensive: res.data.intensive,
+          hiddenLoading:true
         })
         // console.log(res)
       }
@@ -71,5 +74,26 @@ Page({
     wx.navigateTo({
       url: '../detail/detail?id=' + e.target.dataset.id + '&type=' + e.target.dataset.type
     })
+  },
+  backMusic:function() {
+    console.log(app.globalData)
+    if (app.getBackgroundAudioManager().src) {
+      wx.navigateTo({
+        url: '../yin/yin?id=' + app.globalData.backId + '&type=2'
+      })
+    } else {
+      wx.showModal({
+        title: '',
+        content: '没有正在播放的音频',
+        showCancel:false,
+        success: function (res) {
+          if (res.confirm) {
+            // console.log('用户点击确定')
+          } else if (res.cancel) {
+            // console.log('用户点击取消')
+          }
+        }
+      })
+    }
   }
 })

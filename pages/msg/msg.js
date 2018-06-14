@@ -7,7 +7,8 @@ Page({
    */
   data: {
     msg:[],
-    time:[]
+    time:[],
+    hiddenLoading:false
   },
 
   /**
@@ -38,7 +39,8 @@ Page({
         }
         that.setData({
           msg:res.data,
-          time:timeArr
+          time:timeArr,
+          hiddenLoading:true
         })
       }
     })

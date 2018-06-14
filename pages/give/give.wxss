@@ -32,7 +32,7 @@ page{
 }
 .yigou-con{
   width: 690rpx;
-  height: 170rpx;
+  height: 120rpx;
   margin: 0 auto;
   padding: 30rpx 0;
   position: relative;

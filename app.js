@@ -64,7 +64,10 @@ App({
     });
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    backSrc:'',
+    backId:'',
+    backType:2
   },
   getBackgroundAudioManager: function () {
     this.backgroundAudioManager = wx.getBackgroundAudioManager();

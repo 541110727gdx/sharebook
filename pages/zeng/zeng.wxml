@@ -1,9 +1,9 @@
 <!--pages/zeng/zeng.wxml-->
-<view class='name'>{{name}}赠送给你</view>
-<image mode="widthFix" src='../../img/banner.png'></image>
-<view class='title'>5555555</view>
-<button bindcap='btnClick'>{{btnValue}}</button>
-
+ <view class='name' hidden='{{zeng}}'>{{name}}赠送给你</view> 
+<image mode="widthFix" src='{{img}}'></image>
+<view class='title'>{{title}}</view>
+<button open-type='share' hidden='{{!zeng}}'>{{btnValue}}</button>
+<button bindtap='ling' disabled='{{dis}}' hidden='{{zeng}}' data-type='{{goodsType}}' data-goodsId='{{goodsId}}'>{{btnValue}}</button>
 
 
 

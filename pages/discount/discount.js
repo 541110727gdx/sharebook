@@ -10,13 +10,17 @@ Page({
     select2:false,
     select3:false,
     dis:[],
-    time:[]
+    time:[],
+    hiddenLoading:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: '我的优惠券'
+    })
     var that = this;
     wx.request({
       url: 'https://kip.sharetimes.cn/interface/party-coupons',
@@ -41,7 +45,8 @@ Page({
         
         that.setData({
           dis:res.data,
-          time: timeArr
+          time: timeArr,
+          hiddenLoading:true
         })
       }
     })

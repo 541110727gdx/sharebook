@@ -6,34 +6,35 @@
   </view>
 </view>
 <scroll-view hidden='{{!select}}'>
-<block wx:for="{{arr}}" wx:key="yigou">
+<block wx:for="{{arr1}}" wx:key="yigou">
   <view class='yigou'>
     <view class='yigou-con'>
-      <image src='../../img/banner.png'></image>
+      <image src='{{item.recommend_img}}'></image>
       <view>{{item.title}}</view>
-      <view>{{item.dec}}</view>
-      <view>已更新<text>9</text>期 | <text>34</text>人购买</view>
-      <view>购买于<text>2015-03-30</text>\t<text>12:50</text></view>
-      <button class='dai' open-type='share'>赠送</button>
+      <view>{{item.vice_title}}</view>
+      <!-- <view>已更新<text>9</text>期 | <text>34</text>人购买</view> -->
+      <view>购买于{{timeArr[index]}}</view>
+      <button class='dai' bindtap='goZeng' data-title='{{item.title}}' data-img='{{item.recommend_img}}' data-id='{{item.order_id}}' data-type='{{item.goods_type}}' data-goodsId='{{item.goods_id}}'>赠送</button>
       <!-- <view class="dai">待领取</view> -->
     </view>
   </view>
 </block>
 </scroll-view>
 <scroll-view hidden='{{!select2}}'>
-<block wx:for="{{arr}}" wx:key="yigou">
+<block wx:for="{{arr2}}" wx:key="yigou">
   <view class='yigou'>
     <view class='yigou-con'>
       <image src='../../img/banner.png'></image>
       <view>{{item.title}}</view>
-      <view>{{item.dec}}</view>
-      <view>已更新<text>9</text>期 | <text>34</text>人购买</view>
-      <view>购买于<text>2015-03-30</text>\t<text>12:50</text></view>
-      <view class="yiling">已领取</view>
+      <view>{{item.vice_title}}</view>
+      <!-- <view>已更新<text>9</text>期 | <text>34</text>人购买</view> -->
+      <view>购买于{{timeArr2[index]}}</view>
+      <view class="yiling" wx:if='{{item.give_status == 1}}'>待领取</view>
+      <view class="yiling" wx:if='{{item.give_status == 2}}'>已领取</view>
     </view>
   </view>
 </block>
 </scroll-view>
-
+<loading hidden="{{hiddenLoading}}">正在加载</loading>
 
 

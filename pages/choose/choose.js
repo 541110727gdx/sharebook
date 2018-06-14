@@ -13,7 +13,8 @@ Page({
     ],
     you:[],
     time:[],
-    price:''
+    price:'',
+    hiddenLoading:false
   },
 
   /**
@@ -37,9 +38,11 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        // console.log(res);
+        console.log(res);
         if(res.data.code) {
-
+          that.setData({
+            hiddenLoading: true
+          })
         } else {
           var timeArr = []//优惠券结束时间
           for (var i = 0; i < res.data.length; i++) {
@@ -48,12 +51,13 @@ Page({
 
             timeArr.push(time.formatTimeTwo(timeItem, 'Y-M-D'))
           }
-          var arr = { coupon_name: '不使用优惠券', id: null, coupon_id: null, working_condition: null, denomination: null,show:true,checked:'checked'};
+          var arr = { coupon_name: '不使用优惠券', id: 0, coupon_id: 0, working_condition: 0, denomination: 0,show:true,checked:'checked'};
           res.data.push(arr);
           that.setData({
             you: res.data,
             time: timeArr,
-            price:options.price
+            price:options.price,
+            hiddenLoading:true
           })
           console.log(that.data.you)
         }
@@ -70,7 +74,7 @@ Page({
       wx.showToast({
         title: '不满足条件',
         icon:'none',
-        duration: 2000
+        duration: 1500
       })
     } else {
       prevPage.setData({

@@ -13,9 +13,9 @@
         <text class='sliderMax'>{{sliderMax}}</text>
       </view>
       <view class='yin-kong'>
-        <image class='pre' src='../../img/pre.png'></image>
+        <image class='pre' src='{{pre}}'></image>
         <image class='play' bindtap='play' src='{{playImg}}'></image>
-        <image class='next' src='../../img/next.png'></image>
+        <image class='next' src='{{next}}'></image>
       </view>
     </view>
     
@@ -47,7 +47,7 @@
 </view>
 </scroll-view>
 
-
+<loading hidden="{{hiddenLoading}}">正在加载</loading>
 
 
 

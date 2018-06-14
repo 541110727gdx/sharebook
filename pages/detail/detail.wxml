@@ -51,25 +51,26 @@
         </view>
       </view>
       <!--导读  -->
-      <view class='mulu-main' bindtap='goYin' data-id='{{detail.id}}'>
-        <view class='mulu-con' data-id='{{detail.id}}'>
-          <image  data-id='{{detail.id}}'src='{{detail.guide_reading_img}}'></image>
-          <view data-id='{{detail.id}}'>导读</view>
-          <view data-id='{{detail.id}}'>
-            <text data-id='{{detail.id}}'>{{time_top}}</text>
-            <text data-id='{{detail.id}}' class='green'>试听</text>
+      <view class='mulu-main' bindtap='goDao' data-id='{{detail.id}}' data-dao='dao'>
+        <view class='mulu-con' data-id='{{detail.id}}' data-dao='dao'>
+          <image  data-id='{{detail.id}}' data-dao='dao'src='{{detail.guide_reading_img}}'></image>
+          <view data-id='{{detail.id}}' data-dao='dao'>导读</view>
+          <view data-id='{{detail.id}}' data-dao='dao'>
+            <text data-id='{{detail.id}}' data-dao='dao'>{{time_top}}</text>
+            <text data-id='{{detail.id}}' data-dao='dao' class='green'>试听</text>
           </view> 
         </view>
       </view>
       <!--子集  -->
     <block wx:for="{{care_child}}" wx:for-item="child" wx:key="child">
-      <view class='mulu-main' bindtap='goYin' data-id='{{child.id}}'>
-        <view class='mulu-con' data-id='{{child.id}}'>
-          <image src='{{child.title_img}}' data-id='{{child.id}}'></image>
-          <view data-id='{{child.id}}'>{{child.title_name}}</view>
-            <text data-id='{{child.id}}' class='green'>试听</text> 
+      <view class='mulu-main' bindtap='goYin' data-id='{{child.id}}' data-index='{{index}}'>
+        <view class='mulu-con' data-id='{{child.id}}' data-index='{{index}}'>
+          <image src='{{child.title_img}}' data-id='{{child.id}}' data-index='{{index}}'></image>
+          <view data-id='{{child.id}}' data-index='{{index}}'>{{child.title_name}}</view>
+            <text wx:if='{{index == 0 && status == 0}}' data-id='{{child.id}}' data-index='{{index}}' class='green'>试听</text>
+            <text wx:if='{{status == 1}}' data-id='{{child.id}}' data-index='{{index}}' class='green'>试听</text>
           <view>
-            <text data-id='{{child.id}}'>{{time[index]}}</text>
+            <text data-id='{{child.id}}' data-index='{{index}}'>{{time[index]}}</text>
           </view> 
         </view>
       </view>
@@ -87,7 +88,7 @@
         </view>
     </view> 
   </view>
-  <view class='detail-end'>
+  <view class='detail-end' wx:if='{{status == 0}}'>
     <view class='detail-end-con'>
       <view>￥{{detail.price}}</view>
       <view>解锁所有9节课程</view>
@@ -175,9 +176,9 @@
       <text class='price'>￥{{price}}</text>
     </view>
   </view>
-  <view class="zhifu">确认支付</view>
+  <view class="zhifu" bindtap='sureZeng'>确认支付</view>
 </view>
-
+<loading hidden="{{hiddenLoading}}">正在加载</loading>
 
 
 

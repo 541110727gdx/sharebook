@@ -13,4 +13,4 @@
     </block>
   </view>
 </scroll-view>
-
+<loading hidden="{{hiddenLoading}}">正在加载</loading>
