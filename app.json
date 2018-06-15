@@ -1,12 +1,12 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/liu/liu",
     "pages/give/give",
     "pages/zeng/zeng",
     "pages/choose/choose",
     "pages/opinion/opinion",
     "pages/detail/detail",
-    "pages/liu/liu",
     "pages/login/login",
     "pages/yin/yin",
     "pages/person/person",

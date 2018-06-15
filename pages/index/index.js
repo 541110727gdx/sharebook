@@ -79,7 +79,7 @@ Page({
     console.log(app.globalData)
     if (app.getBackgroundAudioManager().src) {
       wx.navigateTo({
-        url: '../yin/yin?id=' + app.globalData.backId + '&type=2'
+        url: '../yin/yin?id=' + app.globalData.backId + '&type=' + app.globalData.type + '&parId=' + app.globalData.parId + '&index=' + app.globalData.index
       })
     } else {
       wx.showModal({

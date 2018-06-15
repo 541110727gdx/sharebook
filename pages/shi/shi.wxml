@@ -21,9 +21,9 @@
 </view>
 <view class='ping'>
   <view class='ping-con'>
-    <view class='no'>不好听</view>
-    <view class='yiban'>一般般</view>
-    <view class='yes'>超好听</view>
+    <view class='{{bu?"no":"no_hui"}}' bindtap='bu'>不好听</view>
+    <view class='{{yiban?"yiban":"yiban_hui"}}' bindtap='yiban'>一般般</view>
+    <view class='{{hao?"yes":"yes_hui"}}' bindtap='hao'>超好听</view>
   </view>
 </view>
 </scroll-view>

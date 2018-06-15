@@ -5,10 +5,10 @@
     <text class='liu-con-title'>全国流量，即时生效，月底生效</text>
     <view class='liu-main'>
        <block wx:for="{{liu}}" wx:key="liu"> 
-          <view class="{{key==index?'act':''}}" bindtap='changColor' data-index='{{index}}'>
-            <text class='name' data-index='{{index}}'>{{item.name}}</text>
-            <text class='xian' data-index='{{index}}'>现价:{{item.price}}元</text>
-            <text class='yuan' data-index='{{index}}'>原价:{{item.d_price}}元</text>
+          <view class="{{key==index?'act':''}}" bindtap='changColor' data-index='{{index}}' data-card_name='{{item.card_name}}' data-card_code='{{item.card_code}}' data-min_discount='{{item.min_discount}}' data-card_value='{{item.card_value}}' data-money='{{yuanList[index]}}'>
+            <text data-card_name='{{item.card_name}}' data-card_code='{{item.card_code}}' data-min_discount='{{item.min_discount}}' data-card_value='{{item.card_value}}' data-money='{{yuanList[index]}}' class='name' data-index='{{index}}'>{{item.card_name}}</text>
+            <text data-card_name='{{item.card_name}}' data-card_code='{{item.card_code}}' data-min_discount='{{item.min_discount}}' data-card_value='{{item.card_value}}' data-money='{{yuanList[index]}}' class='xian' data-index='{{index}}'>现价:{{yuanList[index]}}元</text>
+            <text data-card_name='{{item.card_name}}' data-card_code='{{item.card_code}}' data-min_discount='{{item.min_discount}}' data-card_value='{{item.card_value}}' data-money='{{yuanList[index]}}' class='yuan' data-index='{{index}}'>原价:{{item.card_value/100}}元</text>
           </view>
        </block> 
     </view>

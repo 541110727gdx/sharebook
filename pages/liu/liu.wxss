@@ -43,7 +43,7 @@ input{
   display: inline-block;
   height: 100rpx;
   color: #2f2f2f;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 100rpx;
   border-bottom: 1px solid #eee;
 }
@@ -73,6 +73,6 @@ input{
   background: #5bc950;
   line-height: 88rpx;
   text-align: center;
-  margin: 30rpx auto 0;
+  margin: 30rpx auto 30rpx;
 }
 

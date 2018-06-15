@@ -8,7 +8,10 @@ Page({
   data: {
     shi:[],
     times:'',
-    hiddenLoading:false
+    hiddenLoading:false,
+    bu:false,
+    yiban:false,
+    hao:true
   },
 
   /**
@@ -45,6 +48,27 @@ Page({
   goLiu: function () {
     wx.navigateTo({
       url: '../liu/liu'
+    })
+  },
+  bu:function() {
+    this.setData({
+      bu: true,
+      yiban: false,
+      hao: false
+    })
+  },
+  yiban:function() {
+    this.setData({
+      bu: false,
+      yiban: true,
+      hao: false
+    })
+  },
+  hao:function() {
+    this.setData({
+      bu: false,
+      yiban: false,
+      hao: true
     })
   }
 })

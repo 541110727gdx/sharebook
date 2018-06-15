@@ -13,9 +13,9 @@
         <text class='sliderMax'>{{sliderMax}}</text>
       </view>
       <view class='yin-kong'>
-        <image class='pre' src='{{pre}}'></image>
+        <image class='pre' bindtap='pre' src='{{pre}}'></image>
         <image class='play' bindtap='play' src='{{playImg}}'></image>
-        <image class='next' src='{{next}}'></image>
+        <image class='next' bindtap='next' src='{{next}}'></image>
       </view>
     </view>
     

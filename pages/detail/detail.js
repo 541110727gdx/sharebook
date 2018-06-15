@@ -38,7 +38,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    // console.log(options)
     this.setData({
       id:options.id,
       type_num:options.type,
@@ -56,7 +56,7 @@ Page({
         'content-type': 'application/json'
       },
       success:function(res) {
-        console.log(res);
+        // console.log(res);
         if (res.data.carefully) {//精读
           that.setData({
             detail: res.data.carefully[0],
@@ -450,12 +450,11 @@ Page({
   goDao:function(e) {
     var that = this;
     wx.navigateTo({
-      url: '../yin/yin?id=' + e.target.dataset.id + '&type=2' + '&parId=' + that.data.id,
+      url: '../yin/yin?id=' + e.target.dataset.id + '&type=1' + '&parId=' + that.data.id,
     })
   },
   goYin:function(e) {
     var that = this;
-    console.log(e.target.dataset.index)
     if (e.target.dataset.index == 0 && that.data.status == 0) {//没购买且是第一个子集
       wx.navigateTo({
         url: '../yin/yin?id=' + e.target.dataset.id + '&type=2'+'&parId='+that.data.id,

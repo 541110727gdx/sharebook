@@ -99,7 +99,7 @@ page{
 }
 .detail-img-con{
   width: 690rpx;
-  margin: 0 auto;
+  margin: 0 auto 0rpx;
 }
 .detail-img-con image{
   width: 100%;
