@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/zeng/zeng",
     "pages/liu/liu",
     "pages/give/give",
-    "pages/zeng/zeng",
     "pages/choose/choose",
     "pages/opinion/opinion",
     "pages/detail/detail",

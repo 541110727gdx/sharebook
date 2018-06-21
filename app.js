@@ -6,33 +6,25 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        // console.log(res);
-      }
-    })
     // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        // console.log(res);
-        if (res.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
-            success: res => {
-              // console.log(res);
-              this.globalData.userInfo = res.userInfo;
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              } 
-            }
-          })
-        } else {
-          //未授权 提示用户授权
-        }
-      }
-    })
+    // wx.getSetting({
+    //   success: res => {
+    //     // console.log(res);
+    //     if (res.authSetting['scope.userInfo']) {
+    //       wx.getUserInfo({
+    //         success: res => {
+    //           // console.log(res);
+    //           this.globalData.userInfo = res.userInfo;
+    //           if (this.userInfoReadyCallback) {
+    //             this.userInfoReadyCallback(res)
+    //           } 
+    //         }
+    //       })
+    //     } else {
+    //       //未授权 提示用户授权
+    //     }
+    //   }
+    // })
     wx.login({
       success: function (res) {
         if (res.code) {
@@ -64,7 +56,7 @@ App({
     });
   },
   globalData: {
-    userInfo: null,
+    userInfo: '',
     backSrc:'',
     backId:'',
     backType:2

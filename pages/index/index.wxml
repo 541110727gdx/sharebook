@@ -76,3 +76,8 @@
   <image src='../../img/ifplay.png'></image>
 </view>
 <loading hidden="{{hiddenLoading}}">正在加载</loading>
+<view class='zz' hidden='{{btn}}'></view>
+<view class='login' hidden='{{btn}}'>
+  <view>请先登录</view>
+  <button class='loginBtn' open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 用微信登录 </button> 
+</view>

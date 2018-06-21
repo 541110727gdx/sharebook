@@ -8,7 +8,7 @@
   padding-top: 30rpx;
 }
 .list-con:nth-child(3n) {
-  border-bottom: none;
+  /* border-bottom: none; */
 }
 .list-con image{
   width: 160rpx;

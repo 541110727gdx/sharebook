@@ -46,5 +46,36 @@ page{
 .text2{
   float: right;
 }
-
+.zz{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .6);
+  z-index: 1000;
+}
+.login{
+  width: 690rpx;
+  height: 200rpx;
+  background: #fff;
+  position: fixed;
+  top:30%;
+  left: 50%;
+  margin-left: -345rpx;
+  z-index: 1001;
+  border-radius: 5px;
+}
+.login view{
+  width: 100%;
+  text-align: center;
+  line-height: 74rpx;
+  color: #878787;
+  font-size: 14px;
+}
+.loginBtn{
+  background: #5bc950;
+  color: #fff;
+  width: 60%;
+}
 

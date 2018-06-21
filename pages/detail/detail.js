@@ -38,7 +38,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options)
+    console.log(options)
     this.setData({
       id:options.id,
       type_num:options.type,
@@ -56,7 +56,7 @@ Page({
         'content-type': 'application/json'
       },
       success:function(res) {
-        // console.log(res);
+        console.log(res);
         if (res.data.carefully) {//精读
           that.setData({
             detail: res.data.carefully[0],

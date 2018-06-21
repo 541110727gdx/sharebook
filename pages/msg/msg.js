@@ -1,4 +1,5 @@
 // pages/msg/msg.js
+const app = getApp();
 const time = require('../../utils/util.js');
 Page({
 
@@ -8,7 +9,8 @@ Page({
   data: {
     msg:[],
     time:[],
-    hiddenLoading:false
+    hiddenLoading:false,
+    btn:false
   },
 
   /**
@@ -30,7 +32,11 @@ Page({
       },
       success: function (res) {
         if(res.data == '无消息') {
-
+          that.setData({
+            msg: [],
+            time: [],
+            hiddenLoading: true
+          })
         } else {
           var timeArr = []
           for(var i = 0;i<res.data.length;i++) {
@@ -44,6 +50,57 @@ Page({
         })
       }
     })
+  },
+  onShow:function() {
+    var that = this;
+    wx.getSetting({
+      success: res => {
+        // console.log(res);
+        if (res.authSetting['scope.userInfo']) {
+          that.setData({
+            btn: true
+          })
+          wx.getUserInfo({
+            success: res => {
+              // console.log(res);
+              app.globalData.userInfo = res.userInfo;
+              if (this.userInfoReadyCallback) {
+                this.userInfoReadyCallback(res)
+              }
+            }
+          })
+        } else {
+          //未授权 提示用户授权
+        }
+      }
+    })
+  },
+  getUserInfo: function (e) {
+    if (e.detail.userInfo) {//允许授权
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        btn: true
+      })
+      wx.request({//昵称头像给后台
+        url: 'https://kip.sharetimes.cn/interface/icon-nick',
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          openid: wx.getStorageSync('openId'),
+          icon: app.globalData.userInfo.avatarUrl,
+          nickname: app.globalData.userInfo.nickName
+        },
+        success: function (res) {
+          console.log(res);
+        }
+      })
+    } else {
+      this.setData({
+        btn: false
+      })
+    }
   },
   goJump:function(e) {
     if (e.target.dataset.jump == 1) {//跳转精读

@@ -29,7 +29,7 @@ Page({
       },
       success:function(res) {
         console.log(res)
-        if(res.data.length !==0) {
+        if (res.data.code !== 1) {
           var timeArr=[];
           for (var i = 0; i < res.data.length; i++) {
 
@@ -43,59 +43,20 @@ Page({
             hiddenLoading:true
           })
         } else {
-
+          that.setData({
+            arr: [],
+            time: [],
+            hiddenLoading: true
+          })
         }
         
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  goDetail:function(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '../detail/detail?id=' + e.target.dataset.id + '&type=' + e.target.dataset.type
+    })
   }
 })

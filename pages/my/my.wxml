@@ -1,13 +1,9 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 用微信登录 </button> 
-    <block wx:else>
+      <!-- <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 用微信登录 </button>  -->
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block> 
-    <!-- <open-data class="userinfo-avatar" type="userAvatarUrl"></open-data>
-    <open-data class='userinfo-nickname' type="userNickName" lang="zh_CN"></open-data> -->
   </view>
 </view>
 <view class='my'>
@@ -30,6 +26,13 @@
       </view>
     </view>
     </view>
+    <view class="wode">
+     <view class='wode-con'>
+      <view class="yijian" bindtap='goOpi'>意见反馈
+        <image src='../../img/more.png'></image>
+      </view>
+    </view>
+    </view>
     <view class="wode youyou">
       <view class="wode-con">
       <view class="you" bindtap='goDis'>我的优惠券
@@ -38,8 +41,13 @@
     </view> 
     </view>
   <view class="jian">
-    <view class='jian-con' bindtap='goOpi'>意见反馈
+    <view class='jian-con' bindtap='goLiu'>购买流量
       <image src='../../img/more.png'></image>
     </view>
   </view>
+</view>
+<view class='zz' hidden='{{btn}}'></view>
+<view class='login' hidden='{{btn}}'>
+  <view>请先登录</view>
+  <button class='loginBtn' open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 用微信登录 </button> 
 </view>

@@ -46,6 +46,9 @@ page{
   background: url(http://b247.photo.store.qq.com/psb?/V10RQdNV1rZlgP/OMWEk4dgxoBN5oHWLPXFsMbWazYa6sb7AL9oxQqLpiY!/m/dDMBAAAAAAAAnull&bo=CgASAAAAAAADBzo!&rf=photolist&t=5) right center no-repeat;
   background-size: 10rpx 18rpx;
   color: #8f8f8f;
+  overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
 }
 .hang-con input,.phone-con input{
   display: block;

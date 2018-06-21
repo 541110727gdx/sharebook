@@ -100,8 +100,9 @@ Page({
     })
   },
   goZeng:function(e) {
+    console.log(e)
     wx.navigateTo({
-      url: '../../pages/zeng/zeng?noZeng=true&title=' + e.target.dataset.title + '&img=' + e.target.dataset.img + '&id=' + e.target.dataset.id + '&type=' + e.target.dataset.type + '&goods_id=' + e.target.dataset.goodsId
+      url: '../../pages/zeng/zeng?noZeng=true&title=' + e.target.dataset.title + '&img=' + e.target.dataset.img + '&id=' + e.target.dataset.id + '&type=' + e.target.dataset.type + '&goods_id=' + e.target.dataset.goodsid
     })
   },
   

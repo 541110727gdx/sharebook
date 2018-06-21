@@ -11,7 +11,7 @@ image{
   margin: 50rpx 0;
 }
 button{
-  width: 200rpx;
+  width: 250rpx;
   background: #50b047;
   color: #fff;
   font-size: 14px;
@@ -20,4 +20,9 @@ button{
   width: 690rpx;
   margin: 10rpx auto 0;
 }
-
+.sou{
+  text-align: center;
+  font-size: 14px;
+  color: #000;
+  margin-top: 20rpx;
+}
