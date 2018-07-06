@@ -24,18 +24,21 @@ page{
   width: 46rpx;
   height: 42rpx;
   float: right;
-  margin-top: 12rpx;
+  margin-top: 36rpx;
   margin-right: 10rpx;
 }
 .detail-dec{
   color: #292929;
   font-size: 12px;
   margin: 0 0 10rpx 0;
+  position: relative
 }
 .detail-dec text{
-  float: right;
+  position: absolute;
+  right: 0;
+  top: 26rpx;
   color: #6b6b6b;
-  display: inline-block;
+  display: block;
 }
 .gou{
   color: #6b6b6b;
@@ -95,7 +98,7 @@ page{
 .detail-img{
   width: 100%;
   background: #fff;
-    margin-bottom: 20rpx;  
+    margin-bottom: 60rpx;  
 }
 .detail-img-con{
   width: 690rpx;
@@ -182,7 +185,7 @@ page{
   font-size: 15px;
 }
 .mulu{
-  margin-bottom: 20rpx;
+  margin-bottom: 100rpx;
 }
 .mulu-main{
   width: 100%;
@@ -436,5 +439,9 @@ page{
   text-align: center;
   margin-top: 8rpx;
 }
-
+.kan{
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}
 

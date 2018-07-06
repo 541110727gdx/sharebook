@@ -5,6 +5,7 @@ Page({
     arr:[],
     carefully:[],
     intensive:[],
+    read:[],
     hiddenLoading:false,
     btn:false,
   },
@@ -26,10 +27,14 @@ Page({
       header: {
         'content-type': 'application/json'
       },
+      data:{
+        openid:wx.getStorageSync('openId')
+      },
       success: function (res) {
         that.setData({
           carefully: res.data.carefully,
           intensive: res.data.intensive,
+          read:res.data.read,
           hiddenLoading:true
         })
         // console.log(res)
@@ -40,7 +45,7 @@ Page({
     var that = this;
     wx.getSetting({
       success: res => {
-        console.log(res);
+        // console.log(res);
         if (res.authSetting['scope.userInfo']) {
           that.setData({
             btn: true
@@ -61,6 +66,7 @@ Page({
     })
   },
   getUserInfo: function (e) {
+    var that = this;
     if (e.detail.userInfo) {//允许授权
       app.globalData.userInfo = e.detail.userInfo
       this.setData({
@@ -79,6 +85,26 @@ Page({
         },
         success: function (res) {
           console.log(res);
+          that.setData({
+            hiddenLoading:false
+          })
+          wx.request({
+            url: 'https://kip.sharetimes.cn/interface/carefully-intensive',//首页
+            header: {
+              'content-type': 'application/json'
+            },
+            data: {
+              openid: wx.getStorageSync('openId')
+            },
+            success: function (res) {
+              that.setData({
+                carefully: res.data.carefully,
+                intensive: res.data.intensive,
+                hiddenLoading: true
+              })
+              console.log(res)
+            }
+          })
         }
       })
     } else {
@@ -129,7 +155,7 @@ Page({
     console.log(app.globalData)
     if (app.getBackgroundAudioManager().src) {
       wx.navigateTo({
-        url: '../yin/yin?id=' + app.globalData.backId + '&type=' + app.globalData.type + '&parId=' + app.globalData.parId + '&index=' + app.globalData.index
+        url: '../yin/yin?id=' + app.globalData.backId + '&type=' + app.globalData.type + '&parId=' + app.globalData.parId + '&index=' + app.globalData.index + '&detailtype=' + app.globalData.detailtype
       })
     } else {
       wx.showModal({

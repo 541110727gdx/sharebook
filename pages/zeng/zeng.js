@@ -14,7 +14,8 @@ Page({
     order_id:'',
     goodsType:'',
     goodsId:'',
-    dis:false
+    dis:false,
+    hiddenLoading:false
   },
 
   /**
@@ -55,7 +56,9 @@ Page({
                       zeng: false,
                       btnValue: '已被领取',
                       goodsType: options.type,
-                      goodsId: options.goods_id
+                      goodsId: options.goods_id,
+                      dis:true,
+                      hiddenLoading:true
                     })
                   } else {
                     that.setData({
@@ -66,7 +69,8 @@ Page({
                       zeng: false,
                       btnValue: '领取',
                       goodsType:options.type,
-                      goodsId:options.goods_id
+                      goodsId:options.goods_id,
+                      hiddenLoading: true
                     })
                   }
                 }
@@ -99,7 +103,9 @@ Page({
                           zeng: false,
                           btnValue: '已被领取',
                           goodsType: options.type,
-                          goodsId: options.goods_id
+                          goodsId: options.goods_id,
+                          dis: true,
+                          hiddenLoading: true
                         })
                       } else {
                         that.setData({
@@ -110,7 +116,8 @@ Page({
                           zeng: false,
                           btnValue: '领取',
                           goodsType: options.type,
-                          goodsId: options.goods_id
+                          goodsId: options.goods_id,
+                          hiddenLoading: true
                         })
                       }
                     }

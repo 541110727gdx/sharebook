@@ -1,6 +1,6 @@
 <!--pages/shi/shi.wxml-->
 <scroll-view>
-  <video src='{{shi.talk_abouta_video}}'></video>
+  <video src='{{shi.talk_abouta_video}}' custom-cache="{{false}}"></video>
 <view class='shi'>
   <view class='shi-con'>
     <view>{{shi.title}}</view>

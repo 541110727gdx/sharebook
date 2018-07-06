@@ -9,9 +9,9 @@
         </view>
         <view class='li' data-con='{{item.working_condition}}'>
           <view wx:if='{{!item.show}}'>立减{{item.denomination}}元</view>
-          <view  wx:if='{{!item.show}}'>满{{item.working_condition}}元可用</view>
+          <view  wx:if='{{item.working_condition !== null}}'>满{{item.working_condition}}元可用</view>
         </view>
-        <radio value="{{item.id}}+{{item.coupon_id}}+{{item.denomination}}+{{item.working_condition}}+{{item.coupon_name}} " checked="{{item.checked}}" data-con='22'/>
+        <radio value="{{item.id}}+{{item.coupon_id}}+{{item.denomination}}+{{item.working_condition}}+{{item.coupon_name}} " checked="{{item.checked}}" data-con='22' data-index='{{index}}'/>
       </view>
      </label>
    </radio-group> 

@@ -7,8 +7,14 @@
       <view data-class='{{type}}' data-id='{{list.id}}'>{{list.title}}</view>
       <view data-class='{{type}}' data-id='{{list.id}}'>{{list.vice_title}}</view>
       <view hidden='{{ifInt}}' data-class='{{type}}' data-id='{{list.id}}'>已更新<text>{{list.updates}}</text>期 | <text>{{list.purchase_number}}</text>人购买
-        <text class="price" data-class='{{type}}' data-id='{{list.id}}'>￥<text>{{list.price}}</text></text>
+        <!-- <text class="price" data-class='{{type}}' data-id='{{list.id}}'>￥<text>{{list.price}}</text></text> -->
+        <text wx:if='{{list.owner_status == null}}' data-class='{{type}}' data-id='{{list.id}}'class="price">￥<text>{{list.price}}</text></text>
+        <text wx:if='{{list.owner_status == 1}}' data-class='{{type}}' data-id='{{list.id}}'class="price">已购买</text>
       </view>
+      <view hidden='{{!ifInt}}'>
+        <text wx:if='{{list.owner_status == null}}' data-class='{{type}}' data-id='{{list.id}}'class="price">￥<text>{{list.price}}</text></text>
+        <text wx:if='{{list.owner_status == 1}}' data-class='{{type}}' data-id='{{list.id}}'class="price">已购买</text>
+      </view> 
     </view>
     </block>
   </view>

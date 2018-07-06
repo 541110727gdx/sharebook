@@ -24,19 +24,30 @@ Page({
       header: {
         'content-type': 'application/json'
       },
+      data: {
+        openid: wx.getStorageSync('openId')
+      },
       success: function (res) {
+        console.log(res)
         if (options.title == '大咖精读') {
           that.setData({
             arr: res.data.carefully,
             type: '1',
             hiddenLoading: true
           })
-        } else {
+        } else if (options.title == '学霸笔记'){
           that.setData({
             arr: res.data.intensive,
             ifInt:true,
             type:'2',
             hiddenLoading:true
+          })
+        } else {
+          that.setData({
+            arr: res.data.read,
+            ifInt: true,
+            type: '3',
+            hiddenLoading: true
           })
         }
       }

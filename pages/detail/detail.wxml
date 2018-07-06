@@ -12,9 +12,9 @@
       </view>
       <view class="gou" hidden='{{ifBi}}'>
         已更新<text>{{detail.updates}}</text>期 | <text>{{detail.purchase_number}}</text>人购买
+        <!-- <image src='../../img/send.png'></image>
         <image src='../../img/send.png'></image>
-        <image src='../../img/send.png'></image>
-        <image src='../../img/send.png'></image>
+        <image src='../../img/send.png'></image> -->
       </view>
     </view>
   </view>
@@ -32,15 +32,16 @@
       <view bindtap='giveTab2'><text class="{{select2?'text-act':''}}">目录</text></view>
     </view>
   </view>
-  <view class="detail-img">
+  <view class="detail-img" hidden='{{select2}}'>
     <view class='detail-img-con'>
+    <view class='kan' hidden='{{select}}'>购买后可查看内容</view>
       <!--详情  -->
       <image hidden='{{!select}}' src='{{detail.details_img}}' data-src='{{detail.details_img}}' mode="widthFix" bindtap='previewImg'></image>
     </view>
   </view>
   <!--目录  -->
   <view class='mulu' hidden='{{!select2}}'>
-    <view class='mulu-main' bindtap='goShi' data-id='{{detail.id}}'>
+    <view class='mulu-main' bindtap='goShi' data-id='{{detail.id}}' hidden='{{ifRead}}'>
         <view data-id='{{detail.id}}' class='mulu-con'>
           <image data-id='{{detail.id}}' src='{{detail.recommend_video}}'></image>
           <view data-id='{{detail.id}}'>开讲视频</view>
@@ -51,7 +52,7 @@
         </view>
       </view>
       <!--导读  -->
-      <view class='mulu-main' bindtap='goDao' data-id='{{detail.id}}' data-dao='dao'>
+      <view class='mulu-main' bindtap='goDao' data-id='{{detail.id}}' data-dao='dao' hidden='{{ifRead}}'>
         <view class='mulu-con' data-id='{{detail.id}}' data-dao='dao'>
           <image  data-id='{{detail.id}}' data-dao='dao'src='{{detail.guide_reading_img}}'></image>
           <view data-id='{{detail.id}}' data-dao='dao'>导读</view>
@@ -63,14 +64,14 @@
       </view>
       <!--子集  -->
     <block wx:for="{{care_child}}" wx:for-item="child" wx:key="child">
-      <view class='mulu-main' bindtap='goYin' data-id='{{child.id}}' data-index='{{index}}'>
-        <view class='mulu-con' data-id='{{child.id}}' data-index='{{index}}'>
-          <image src='{{child.title_img}}' data-id='{{child.id}}' data-index='{{index}}'></image>
-          <view data-id='{{child.id}}' data-index='{{index}}'>{{child.title_name}}</view>
-            <text wx:if='{{index == 0 && status == 0}}' data-id='{{child.id}}' data-index='{{index}}' class='green'>试听</text>
-            <text wx:if='{{status == 1}}' data-id='{{child.id}}' data-index='{{index}}' class='green'>试听</text>
+      <view class='mulu-main' bindtap='goYin' data-id='{{child.id}}' data-index='{{index}}' data-detailtype='{{detailType}}'>
+        <view class='mulu-con' data-id='{{child.id}}' data-index='{{index}}' data-detailtype='{{detailType}}'>
+          <image src='{{child.title_img}}' data-id='{{child.id}}' data-index='{{index}}' data-detailtype='{{detailType}}'></image>
+          <view data-id='{{child.id}}' data-index='{{index}}' data-detailtype='{{detailType}}'>{{child.title_name}}</view>
+            <text wx:if='{{index == 0 && status == 0}}' data-id='{{child.id}}' data-index='{{index}}' data-detailtype='{{detailType}}' class='green'>试听</text>
+            <text wx:if='{{status == 1}}' data-id='{{child.id}}' data-index='{{index}}' data-detailtype='{{detailType}}' class='green'>试听</text>
           <view>
-            <text data-id='{{child.id}}' data-index='{{index}}'>{{time[index]}}</text>
+            <text data-id='{{child.id}}' data-index='{{index}}' data-detailtype='{{detailType}}'>{{time[index]}}</text>
           </view> 
         </view>
       </view>

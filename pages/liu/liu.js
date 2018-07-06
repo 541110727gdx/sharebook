@@ -105,8 +105,8 @@ Page({
             openid:wx.getStorageSync('openId'),
             card_name: that.data.card_name,
             card_code: that.data.card_code,
-            // pay_amount: that.data.amount_payable * that.data.discount /100,
-            pay_amount:1,
+            pay_amount: that.data.amount_payable * that.data.discount /100,
+            // pay_amount:1,
             amount_payable: that.data.amount_payable,
             discount: that.data.discount
           },

@@ -31,7 +31,8 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        if(res.data == '无消息') {
+        console.log(res)
+        if(res.data.msg == '无消息') {
           that.setData({
             msg: [],
             time: [],
@@ -42,12 +43,13 @@ Page({
           for(var i = 0;i<res.data.length;i++) {
             timeArr.push(time.formatTimeTwo(res.data[i].receive_created,'M-D'))
           }
+          that.setData({
+            msg: res.data,
+            time: timeArr,
+            hiddenLoading: true
+          })
         }
-        that.setData({
-          msg:res.data,
-          time:timeArr,
-          hiddenLoading:true
-        })
+        
       }
     })
   },

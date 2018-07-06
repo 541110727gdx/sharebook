@@ -24,6 +24,9 @@ video{
   font-size: 15px;
   margin-top: 20rpx;
   margin-bottom: 10rpx;
+  overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
 }
 .shi-con view:nth-child(2) {
   color: #292929;

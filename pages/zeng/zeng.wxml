@@ -5,5 +5,5 @@
 <button open-type='share' hidden='{{!zeng}}'>{{btnValue}}</button>
 <button bindtap='ling' disabled='{{dis}}' hidden='{{zeng}}' data-type='{{goodsType}}' data-goodsid='{{goodsId}}'>{{btnValue}}</button>
 <view class='sou'>请搜索并关注分享读书部落</view>
-
+<loading hidden="{{hiddenLoading}}">正在加载</loading>
 

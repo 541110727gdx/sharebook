@@ -1,7 +1,7 @@
  //app.js
 App({
-  onLaunch: function () {
-    
+  onLaunch: function (options) {
+    // console.log(options.scene)
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

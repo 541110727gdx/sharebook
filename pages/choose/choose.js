@@ -6,22 +6,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    items: [
-      { name: 'USA', value: '1', checked: 'true' },
-      { name: 'USA', value: '美2国' },
-      { name: 'USA', value: '3' }
-    ],
+    items: [],
     you:[],
     time:[],
     price:'',
-    hiddenLoading:false
+    hiddenLoading:false,
+    index:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    console.log(options)
     var that = this;
     wx.setNavigationBarTitle({
       title: '选择优惠券'
@@ -51,7 +48,7 @@ Page({
 
             timeArr.push(time.formatTimeTwo(timeItem, 'Y-M-D'))
           }
-          var arr = { coupon_name: '不使用优惠券', id: 0, coupon_id: 0, working_condition: 0, denomination: 0,show:true,checked:'checked'};
+          var arr = { coupon_name: '不使用优惠券', id: 1, coupon_id: 0, working_condition: null, denomination: 0,show:true,checked:'checked'};
           res.data.push(arr);
           that.setData({
             you: res.data,
@@ -70,20 +67,26 @@ Page({
     var youMsg = e.detail.value.split('+')
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2];
-    if (youMsg[3] > this.data.price) {//优惠券金额大于商品金额，不能使用
+    if (Number(youMsg[3]) > Number(this.data.price)) {//优惠券条件金额大于商品金额，不能使用
       wx.showToast({
         title: '不满足条件',
         icon:'none',
         duration: 1500
       })
+    } else if (Number(youMsg[2]) > Number(this.data.price)) {//优惠金额大于商品金额
+      wx.showToast({
+        title: '不满足条件',
+        icon: 'none',
+        duration: 1500
+      })
     } else {
       prevPage.setData({
-        id:youMsg[0],
+        id_you:youMsg[0],
         coupon_id:youMsg[1],
         denomination:youMsg[2],
         working_condition:youMsg[3],
         name:youMsg[4],
-        priceGou:that.data.price - youMsg[2]
+        priceGou:(that.data.price - youMsg[2]).toFixed(1)
       })
     wx.navigateBack({
       delta: 1

@@ -31,7 +31,12 @@ Page({
     ifBi:false,
     jump_type:'',
     hiddenLoading:false,
-    status:''
+    status:'',
+    index:'',
+    id_you:'',
+    ifRead:false,
+    type:'',
+    detailType:''
   },
 
   /**
@@ -67,7 +72,8 @@ Page({
             coupon: res.data.coupon,
             jump_type:1,
             hiddenLoading:true,
-            status: res.data.status
+            status: res.data.status,
+            detailType: 'jingdu'
           })
           var timeList = []
           var timeArr = []//优惠券结束时间
@@ -96,7 +102,14 @@ Page({
             time_top: times
           })
           
-        } else {//笔记
+        } else if (res.data.intensive){//笔记
+          if(res.data.status == 0) {
+            that.setData({
+              select:false
+            })
+          } else {
+
+          }
           that.setData({
             detail: res.data.intensive[0],
             danjia: res.data.intensive[0].price,
@@ -106,7 +119,8 @@ Page({
             ifBi:true,
             jump_type: 2,
             hiddenLoading: true,
-            status: res.data.status
+            status: res.data.status,
+            detailType: 'biji'
           })
           var timeList = []
           var timeArr = []//优惠券结束时间
@@ -135,6 +149,47 @@ Page({
             time_top: times
           })
           
+        } else if (res.data.read) {//读物
+          that.setData({
+            detail: res.data.read[0],
+            care_child: res.data.read_child,
+            danjia: res.data.read[0].price,
+            price: res.data.read[0].price,
+            priceGou: res.data.read[0].price,
+            coupon: res.data.coupon,
+            jump_type: 1,
+            hiddenLoading: true,
+            status: res.data.status,
+            ifRead: true,
+            select2:false,
+            detailType:'duwu'
+          })
+          var timeList = []
+          var timeArr = []//优惠券结束时间
+          for (var i = 0; i < res.data.read_child.length; i++) {
+
+            var timeItem = res.data.read_child[i].created;
+
+            timeList.push(time.formatTimeTwo(timeItem, 'M-D'))
+          }
+          if (res.data.coupon) {
+            for (var i = 0; i < res.data.coupon.length; i++) {
+
+              var timeItem2 = res.data.coupon[i].end_time;
+
+              timeArr.push(time.formatTimeTwo(timeItem2, 'Y-M-D'))
+            }
+          } else {
+            that.setData({
+              youHidden: true
+            })
+          }
+          var times = time.formatTimeTwo(res.data.read[0].created, 'M-D');
+          that.setData({
+            time: timeList,
+            timeArr: timeArr,
+            time_top: times
+          })
         }
         
       }
@@ -364,7 +419,7 @@ Page({
             url: 'https://kip.sharetimes.cn/interface/push-order',
             data: {
               openid: wx.getStorageSync('openId'),
-              price: 1,
+              price: (that.data.price * 100).toFixed(0),
               jump_type: that.data.jump_type,
               id: that.data.detail.id,
               hui_id: that.data.coupon_id,
@@ -403,13 +458,13 @@ Page({
     // 获取用户信息
     wx.getSetting({
       success: res => {
-        // console.log(res);
+        console.log((that.data.priceGou * 100).toFixed(0));
         if (res.authSetting['scope.userInfo']) {
           wx.request({
             url: 'https://kip.sharetimes.cn/interface/push-order',
             data:{
               openid:wx.getStorageSync('openId'),
-              price:1,
+              price: (that.data.priceGou * 100).toFixed(0),
               jump_type: that.data.jump_type,
               id: that.data.detail.id,
               hui_id: that.data.coupon_id
@@ -457,7 +512,7 @@ Page({
     var that = this;
     if (e.target.dataset.index == 0 && that.data.status == 0) {//没购买且是第一个子集
       wx.navigateTo({
-        url: '../yin/yin?id=' + e.target.dataset.id + '&type=2'+'&parId='+that.data.id,
+        url: '../yin/yin?id=' + e.target.dataset.id + '&type=2' + '&parId=' + that.data.id + '&status=' + that.data.status + '&detailtype=' + e.target.dataset.detailtype,
       })
     } else if (e.target.dataset.index !== 0 && that.data.status == 0){
       wx.showToast({
@@ -467,7 +522,7 @@ Page({
       })
     } else if (that.data.status == 1) {
       wx.navigateTo({
-        url: '../yin/yin?id=' + e.target.dataset.id + '&type=2' + '&parId=' + that.data.id,
+        url: '../yin/yin?id=' + e.target.dataset.id + '&type=2' + '&parId=' + that.data.id + '&detailtype=' + e.target.dataset.detailtype,
       })
     } 
     

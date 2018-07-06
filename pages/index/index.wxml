@@ -23,7 +23,8 @@
       <view data-id='{{care.id}}' data-type='1' >{{care.title}}</view>
       <view data-id='{{care.id}}' data-type='1' >{{care.vice_title}}</view>
       <view data-id='{{care.id}}' data-type='1' >已更新<text>{{care.updates}}</text>期 | <text>{{care.purchase_number}}</text>人购买
-        <text data-id='{{care.id}}' data-type='1' class="price">￥<text>{{care.price}}</text></text>
+        <text wx:if='{{care.owner_status == null}}' data-id='{{care.id}}' data-type='1' class="price">￥<text>{{care.price}}</text></text>
+        <text wx:if='{{care.owner_status == 1}}' data-id='{{care.id}}' data-type='1' class="price">已购买</text>
       </view>
     </view>
     </block>
@@ -44,14 +45,15 @@
       <view data-id='{{int.id}}' data-type='2' >{{int.title}}</view>
       <view data-id='{{int.id}}' data-type='2' >{{int.vice_title}}</view>
         <view>
-        <text data-id='{{int.id}}' data-type='2'  class="price">￥<text>{{int.price}}</text></text>
+        <text wx:if='{{int.owner_status == null}}' data-id='{{int.id}}' data-type='2' class="price">￥<text>{{int.price}}</text></text>
+        <text wx:if='{{int.owner_status == 1}}' data-id='{{int.id}}' data-type='2' class="price">已购买</text>
       </view> 
     </view>
     </block>
   </view>
 </view>
 <!--有声读物  -->
-<view class='index' hidden='true'>
+<view class='index'>
   <view class='index-con'>
     <view class="list-title">
       有声读物
@@ -59,13 +61,14 @@
     </view>
   </view>
   <view class="list">
-    <block wx:for="{{arr}}" wx:for-item="list" wx:key="list">
-    <view class='list-con'>
-      <image src='{{list.src}}'></image>
-      <view>{{list.title}}</view>
-      <view>{{list.dec}}</view>
-      <view>已更新<text>9</text>期 | <text>55</text>人购买
-        <text class="price">￥<text>49.9</text></text>
+    <block wx:for="{{read}}" wx:for-item="read" wx:key="read">
+    <view wx:if='{{index < 3}}' class='list-con' data-id='{{read.id}}' data-type='3' bindtap='goDetail'>
+      <image src='{{read.recommend_img}}' data-id='{{read.id}}' data-type='3'></image>
+      <view data-id='{{read.id}}' data-type='3'>{{read.title}}</view>
+      <view data-id='{{read.id}}' data-type='3'>{{read.vice_title}}</view>
+      <view data-id='{{read.id}}' data-type='3'>已更新<text>{{read.updates}}</text>期 | <text>{{read.purchase_number}}</text>人购买
+         <text wx:if='{{read.owner_status == null}}' data-id='{{read.id}}' data-type='3' class="price">￥<text>{{read.price}}</text></text>
+        <text wx:if='{{read.owner_status == 1}}' data-id='{{read.id}}' data-type='3' class="price">已购买</text>
       </view>
     </view>
     </block>
