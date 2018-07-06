@@ -9,6 +9,16 @@ Page({
     hiddenLoading:false,
     btn:false,
   },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '分享读书部落',
+      path: '/pages/index/index'
+    }
+  },
   onLoad: function (options) {
     var that = this;
     wx.request({
@@ -149,7 +159,7 @@ Page({
   }, 
   goDetail:function(e) {
     wx.navigateTo({
-      url: '../detail/detail?id=' + e.target.dataset.id + '&type=' + e.target.dataset.type
+      url: '../detail/detail?id=' + e.target.dataset.id + '&type=' + e.target.dataset.type + '&ifShare=2'
     })
   },
   backMusic:function() {

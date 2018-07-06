@@ -65,4 +65,5 @@ App({
     this.backgroundAudioManager = wx.getBackgroundAudioManager();
     return this.backgroundAudioManager
   }
+  
 })

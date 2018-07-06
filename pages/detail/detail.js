@@ -38,162 +38,348 @@ Page({
     type:'',
     detailType:''
   },
-
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: this.data.detail.title,
+      path: '/pages/detail/detail?id=' + this.data.id +'&type=' + this.data.type_num + '&ifShare=1'
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    this.setData({
-      id:options.id,
-      type_num:options.type,
-    })
     var that = this;
-    // console.log(wx.getStorageSync('openId'))
-    wx.request({
-      url: 'https://kip.sharetimes.cn/interface/details',
-      data:{
-        id:options.id,
-        type_num:options.type,
-        openid:wx.getStorageSync('openId')
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success:function(res) {
-        console.log(res);
-        if (res.data.carefully) {//精读
-          that.setData({
-            detail: res.data.carefully[0],
-            care_child: res.data.carefully_child,
-            danjia: res.data.carefully[0].price,
-            price: res.data.carefully[0].price,
-            priceGou: res.data.carefully[0].price,
-            coupon: res.data.coupon,
-            jump_type:1,
-            hiddenLoading:true,
-            status: res.data.status,
-            detailType: 'jingdu'
-          })
-          var timeList = []
-          var timeArr = []//优惠券结束时间
-          for (var i = 0; i < res.data.carefully_child.length; i++) {
+    console.log(options)
+    if(options.ifShare == 1) {//分享进来的
+      wx.login({
+        success: function (res) {
+          if (res.code) {
+            // console.log(res)
+            //发起网络请求
+              wx.request({
+                url: 'https://kip.sharetimes.cn/interface/wx-openid',
+                method: 'GET',
+                data: {
+                  code: res.code
+                },
+                header: {
+                  'content-type': 'application/json'
+                },
+                success: function (res) {
+                  console.log(res)
+                  wx.setStorageSync('openId', res.data.openid);
 
-            var timeItem = res.data.carefully_child[i].created;
+                  that.setData({
+                    id: options.id,
+                    type_num: options.type,
+                  })
+                  wx.request({
+                    url: 'https://kip.sharetimes.cn/interface/details',
+                    data: {
+                      id: options.id,
+                      type_num: options.type,
+                      openid: wx.getStorageSync('openId')
+                    },
+                    header: {
+                      'content-type': 'application/json'
+                    },
+                    success: function (res) {
+                      console.log(res);
+                      if (res.data.carefully) {//精读
+                        that.setData({
+                          detail: res.data.carefully[0],
+                          care_child: res.data.carefully_child,
+                          danjia: res.data.carefully[0].price,
+                          price: res.data.carefully[0].price,
+                          priceGou: res.data.carefully[0].price,
+                          coupon: res.data.coupon,
+                          jump_type: 1,
+                          hiddenLoading: true,
+                          status: res.data.status,
+                          detailType: 'jingdu'
+                        })
+                        var timeList = []
+                        var timeArr = []//优惠券结束时间
+                        for (var i = 0; i < res.data.carefully_child.length; i++) {
 
-            timeList.push(time.formatTimeTwo(timeItem, 'M-D'))
-          }
-          if (res.data.coupon) {
-            for (var i = 0; i < res.data.coupon.length; i++) {
+                          var timeItem = res.data.carefully_child[i].created;
 
-              var timeItem2 = res.data.coupon[i].end_time;
+                          timeList.push(time.formatTimeTwo(timeItem, 'M-D'))
+                        }
+                        if (res.data.coupon) {
+                          for (var i = 0; i < res.data.coupon.length; i++) {
 
-              timeArr.push(time.formatTimeTwo(timeItem2, 'Y-M-D'))
-            }
+                            var timeItem2 = res.data.coupon[i].end_time;
+
+                            timeArr.push(time.formatTimeTwo(timeItem2, 'Y-M-D'))
+                          }
+                        } else {
+                          that.setData({
+                            youHidden: true
+                          })
+                        }
+                        var times = time.formatTimeTwo(res.data.carefully[0].created, 'M-D');
+                        that.setData({
+                          time: timeList,
+                          timeArr: timeArr,
+                          time_top: times
+                        })
+
+                      } else if (res.data.intensive) {//笔记
+                        if (res.data.status == 0) {
+                          that.setData({
+                            select: false
+                          })
+                        } else {
+
+                        }
+                        that.setData({
+                          detail: res.data.intensive[0],
+                          danjia: res.data.intensive[0].price,
+                          price: res.data.intensive[0].price,
+                          priceGou: res.data.intensive[0].price,
+                          coupon: res.data.coupon,
+                          ifBi: true,
+                          jump_type: 2,
+                          hiddenLoading: true,
+                          status: res.data.status,
+                          detailType: 'biji'
+                        })
+                        var timeList = []
+                        var timeArr = []//优惠券结束时间
+                        for (var i = 0; i < res.data.intensive.length; i++) {
+
+                          var timeItem = res.data.intensive[i].created;
+
+                          timeList.push(time.formatTimeTwo(timeItem, 'M-D'))
+                        }
+                        if (res.data.coupon) {
+                          for (var i = 0; i < res.data.coupon.length; i++) {
+
+                            var timeItem2 = res.data.coupon[i].end_time;
+
+                            timeArr.push(time.formatTimeTwo(timeItem2, 'Y-M-D'))
+                          }
+                        } else {
+                          that.setData({
+                            youHidden: true
+                          })
+                        }
+                        var times = time.formatTimeTwo(res.data.intensive[0].created, 'M-D');
+                        that.setData({
+                          time: timeList,
+                          timeArr: timeArr,
+                          time_top: times
+                        })
+
+                      } else if (res.data.read) {//读物
+                        that.setData({
+                          detail: res.data.read[0],
+                          care_child: res.data.read_child,
+                          danjia: res.data.read[0].price,
+                          price: res.data.read[0].price,
+                          priceGou: res.data.read[0].price,
+                          coupon: res.data.coupon,
+                          jump_type: 1,
+                          hiddenLoading: true,
+                          status: res.data.status,
+                          ifRead: true,
+                          select2: false,
+                          detailType: 'duwu'
+                        })
+                        var timeList = []
+                        var timeArr = []//优惠券结束时间
+                        for (var i = 0; i < res.data.read_child.length; i++) {
+
+                          var timeItem = res.data.read_child[i].created;
+
+                          timeList.push(time.formatTimeTwo(timeItem, 'M-D'))
+                        }
+                        if (res.data.coupon) {
+                          for (var i = 0; i < res.data.coupon.length; i++) {
+
+                            var timeItem2 = res.data.coupon[i].end_time;
+
+                            timeArr.push(time.formatTimeTwo(timeItem2, 'Y-M-D'))
+                          }
+                        } else {
+                          that.setData({
+                            youHidden: true
+                          })
+                        }
+                        var times = time.formatTimeTwo(res.data.read[0].created, 'M-D');
+                        that.setData({
+                          time: timeList,
+                          timeArr: timeArr,
+                          time_top: times
+                        })
+                      }
+
+                    }
+                  })
+                }
+              })
+
+
           } else {
-            that.setData({
-              youHidden: true
-            })
+            console.log('登录失败！' + res.errMsg)
           }
-          var times = time.formatTimeTwo(res.data.carefully[0].created, 'M-D');
-          that.setData({
-            time: timeList,
-            timeArr: timeArr,
-            time_top: times
-          })
-          
-        } else if (res.data.intensive){//笔记
-          if(res.data.status == 0) {
-            that.setData({
-              select:false
-            })
-          } else {
-
-          }
-          that.setData({
-            detail: res.data.intensive[0],
-            danjia: res.data.intensive[0].price,
-            price: res.data.intensive[0].price,
-            priceGou: res.data.intensive[0].price,
-            coupon: res.data.coupon,
-            ifBi:true,
-            jump_type: 2,
-            hiddenLoading: true,
-            status: res.data.status,
-            detailType: 'biji'
-          })
-          var timeList = []
-          var timeArr = []//优惠券结束时间
-          for (var i = 0; i < res.data.intensive.length; i++) {
-
-            var timeItem = res.data.intensive[i].created;
-
-            timeList.push(time.formatTimeTwo(timeItem, 'M-D'))
-          }
-          if (res.data.coupon) {
-            for (var i = 0; i < res.data.coupon.length; i++) {
-
-              var timeItem2 = res.data.coupon[i].end_time;
-
-              timeArr.push(time.formatTimeTwo(timeItem2, 'Y-M-D'))
-            }
-          } else {
-            that.setData({
-              youHidden: true
-            })
-          }
-          var times = time.formatTimeTwo(res.data.intensive[0].created, 'M-D');
-          that.setData({
-            time: timeList,
-            timeArr: timeArr,
-            time_top: times
-          })
-          
-        } else if (res.data.read) {//读物
-          that.setData({
-            detail: res.data.read[0],
-            care_child: res.data.read_child,
-            danjia: res.data.read[0].price,
-            price: res.data.read[0].price,
-            priceGou: res.data.read[0].price,
-            coupon: res.data.coupon,
-            jump_type: 1,
-            hiddenLoading: true,
-            status: res.data.status,
-            ifRead: true,
-            select2:false,
-            detailType:'duwu'
-          })
-          var timeList = []
-          var timeArr = []//优惠券结束时间
-          for (var i = 0; i < res.data.read_child.length; i++) {
-
-            var timeItem = res.data.read_child[i].created;
-
-            timeList.push(time.formatTimeTwo(timeItem, 'M-D'))
-          }
-          if (res.data.coupon) {
-            for (var i = 0; i < res.data.coupon.length; i++) {
-
-              var timeItem2 = res.data.coupon[i].end_time;
-
-              timeArr.push(time.formatTimeTwo(timeItem2, 'Y-M-D'))
-            }
-          } else {
-            that.setData({
-              youHidden: true
-            })
-          }
-          var times = time.formatTimeTwo(res.data.read[0].created, 'M-D');
-          that.setData({
-            time: timeList,
-            timeArr: timeArr,
-            time_top: times
-          })
         }
-        
-      }
-    })
+      });
+    } else {
+      that.setData({
+        id: options.id,
+        type_num: options.type,
+      })
+      wx.request({
+        url: 'https://kip.sharetimes.cn/interface/details',
+        data: {
+          id: options.id,
+          type_num: options.type,
+          openid: wx.getStorageSync('openId')
+        },
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+          console.log(res);
+          if (res.data.carefully) {//精读
+            that.setData({
+              detail: res.data.carefully[0],
+              care_child: res.data.carefully_child,
+              danjia: res.data.carefully[0].price,
+              price: res.data.carefully[0].price,
+              priceGou: res.data.carefully[0].price,
+              coupon: res.data.coupon,
+              jump_type: 1,
+              hiddenLoading: true,
+              status: res.data.status,
+              detailType: 'jingdu'
+            })
+            var timeList = []
+            var timeArr = []//优惠券结束时间
+            for (var i = 0; i < res.data.carefully_child.length; i++) {
+
+              var timeItem = res.data.carefully_child[i].created;
+
+              timeList.push(time.formatTimeTwo(timeItem, 'M-D'))
+            }
+            if (res.data.coupon) {
+              for (var i = 0; i < res.data.coupon.length; i++) {
+
+                var timeItem2 = res.data.coupon[i].end_time;
+
+                timeArr.push(time.formatTimeTwo(timeItem2, 'Y-M-D'))
+              }
+            } else {
+              that.setData({
+                youHidden: true
+              })
+            }
+            var times = time.formatTimeTwo(res.data.carefully[0].created, 'M-D');
+            that.setData({
+              time: timeList,
+              timeArr: timeArr,
+              time_top: times
+            })
+
+          } else if (res.data.intensive) {//笔记
+            if (res.data.status == 0) {
+              that.setData({
+                select: false
+              })
+            } else {
+
+            }
+            that.setData({
+              detail: res.data.intensive[0],
+              danjia: res.data.intensive[0].price,
+              price: res.data.intensive[0].price,
+              priceGou: res.data.intensive[0].price,
+              coupon: res.data.coupon,
+              ifBi: true,
+              jump_type: 2,
+              hiddenLoading: true,
+              status: res.data.status,
+              detailType: 'biji'
+            })
+            var timeList = []
+            var timeArr = []//优惠券结束时间
+            for (var i = 0; i < res.data.intensive.length; i++) {
+
+              var timeItem = res.data.intensive[i].created;
+
+              timeList.push(time.formatTimeTwo(timeItem, 'M-D'))
+            }
+            if (res.data.coupon) {
+              for (var i = 0; i < res.data.coupon.length; i++) {
+
+                var timeItem2 = res.data.coupon[i].end_time;
+
+                timeArr.push(time.formatTimeTwo(timeItem2, 'Y-M-D'))
+              }
+            } else {
+              that.setData({
+                youHidden: true
+              })
+            }
+            var times = time.formatTimeTwo(res.data.intensive[0].created, 'M-D');
+            that.setData({
+              time: timeList,
+              timeArr: timeArr,
+              time_top: times
+            })
+
+          } else if (res.data.read) {//读物
+            that.setData({
+              detail: res.data.read[0],
+              care_child: res.data.read_child,
+              danjia: res.data.read[0].price,
+              price: res.data.read[0].price,
+              priceGou: res.data.read[0].price,
+              coupon: res.data.coupon,
+              jump_type: 1,
+              hiddenLoading: true,
+              status: res.data.status,
+              ifRead: true,
+              select2: false,
+              detailType: 'duwu'
+            })
+            var timeList = []
+            var timeArr = []//优惠券结束时间
+            for (var i = 0; i < res.data.read_child.length; i++) {
+
+              var timeItem = res.data.read_child[i].created;
+
+              timeList.push(time.formatTimeTwo(timeItem, 'M-D'))
+            }
+            if (res.data.coupon) {
+              for (var i = 0; i < res.data.coupon.length; i++) {
+
+                var timeItem2 = res.data.coupon[i].end_time;
+
+                timeArr.push(time.formatTimeTwo(timeItem2, 'Y-M-D'))
+              }
+            } else {
+              that.setData({
+                youHidden: true
+              })
+            }
+            var times = time.formatTimeTwo(res.data.read[0].created, 'M-D');
+            that.setData({
+              time: timeList,
+              timeArr: timeArr,
+              time_top: times
+            })
+          }
+
+        }
+      })
+    }
   },
 
   giveTab: function () {
