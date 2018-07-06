@@ -100,6 +100,7 @@ Page({
               that.setData({
                 carefully: res.data.carefully,
                 intensive: res.data.intensive,
+                read: res.data.read,
                 hiddenLoading: true
               })
               console.log(res)
