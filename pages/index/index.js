@@ -165,9 +165,24 @@ Page({
   backMusic:function() {
     console.log(app.globalData)
     if (app.getBackgroundAudioManager().src) {
-      wx.navigateTo({
-        url: '../yin/yin?id=' + app.globalData.backId + '&type=' + app.globalData.type + '&parId=' + app.globalData.parId + '&index=' + app.globalData.index + '&detailtype=' + app.globalData.detailtype
-      })
+      if (app.getBackgroundAudioManager().paused) {//是否正在播放
+        wx.showModal({
+          title: '',
+          content: '没有正在播放的音频',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              // console.log('用户点击确定')
+            } else if (res.cancel) {
+              // console.log('用户点击取消')
+            }
+          }
+        })
+      } else {
+        wx.navigateTo({
+          url: '../yin/yin?id=' + app.globalData.backId + '&type=' + app.globalData.type + '&parId=' + app.globalData.parId + '&index=' + app.globalData.index + '&detailtype=' + app.globalData.detailtype
+        })
+      }
     } else {
       wx.showModal({
         title: '',

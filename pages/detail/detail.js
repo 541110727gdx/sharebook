@@ -342,7 +342,7 @@ Page({
               price: res.data.read[0].price,
               priceGou: res.data.read[0].price,
               coupon: res.data.coupon,
-              jump_type: 1,
+              jump_type: 3,
               hiddenLoading: true,
               status: res.data.status,
               ifRead: true,
@@ -606,6 +606,7 @@ Page({
             data: {
               openid: wx.getStorageSync('openId'),
               price: (that.data.price * 100).toFixed(0),
+              // price:1,
               jump_type: that.data.jump_type,
               id: that.data.detail.id,
               hui_id: that.data.coupon_id,
@@ -651,6 +652,7 @@ Page({
             data:{
               openid:wx.getStorageSync('openId'),
               price: (that.data.priceGou * 100).toFixed(0),
+              // price:1,
               jump_type: that.data.jump_type,
               id: that.data.detail.id,
               hui_id: that.data.coupon_id
@@ -667,6 +669,9 @@ Page({
                 signType: 'MD5',
                 paySign: res.data.paySign,
                 success:function(res) {
+                  that.setData({
+                    hiddenLoading:false
+                  })
                   wx.redirectTo({
                     url:'../detail/detail?id='+that.data.id+'&type='+that.data.type_num
                   })

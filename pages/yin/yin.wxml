@@ -33,7 +33,7 @@
     <image src='../../img/more.png'></image>
   </view>
 </view>
-<view class='shi-img'>
+<view class='shi-img' wx:if='{{yin.details_img != 0}}'>
   <view class='shi-img-con'>
     <image src='{{yin.details_img}}' data-src='{{yin.details_img}}' mode="widthFix" bindtap='previewImg'></image>
   </view>

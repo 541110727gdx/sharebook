@@ -92,7 +92,7 @@
   <view class='detail-end' wx:if='{{status == 0}}'>
     <view class='detail-end-con'>
       <view>￥{{detail.price}}</view>
-      <view>解锁所有9节课程</view>
+      <view>解锁所有{{detail.updates}}节课程</view>
     </view>
     
     <view class="buy" bindtap='gouMai' data-statu="open">
@@ -138,9 +138,10 @@
     </view>
   </view>
   <view class='hui-main'>
-    <view class='hui-con-main' bindtap='goChoose'>
+    <view class='hui-con-main'>
       选择优惠券
-      <text>{{name}}</text>
+      <text bindtap='goChoose' wx:if='{{detail.coupon == 1}}'>{{name}}</text>
+      <text wx:else style='color:#797979'>不支持使用优惠券</text>
     </view>
   </view>
   <view class='hui-main'>

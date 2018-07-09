@@ -30,7 +30,8 @@ Page({
         img: options.img,
         order_id: options.id,
         goodsId:options.goods_id,
-        goodsType:options.type
+        goodsType:options.type,
+        hiddenLoading: true
       })
     } else {
       console.log(options)

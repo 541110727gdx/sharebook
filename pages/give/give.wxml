@@ -24,7 +24,7 @@
 <block wx:for="{{arr2}}" wx:key="yigou">
   <view class='yigou'>
     <view class='yigou-con'>
-      <image src='../../img/banner.png'></image>
+      <image src='{{item.recommend_img}}'></image>
       <view>{{item.title}}</view>
       <view>{{item.vice_title}}</view>
       <!-- <view>已更新<text>9</text>期 | <text>34</text>人购买</view> -->
