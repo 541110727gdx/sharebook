@@ -1,4 +1,5 @@
  //app.js
+var aldstat = require("./utils/ald-stat.js");
 App({
   onLaunch: function (options) {
     // console.log(options.scene)
