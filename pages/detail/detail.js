@@ -690,22 +690,22 @@ Page({
   },
   goShi:function(e) {
     wx.navigateTo({
-      url: '../shi/shi?id=' + e.target.dataset.id + '&type=1',
+      url: '../shi/shi?id=' + e.currentTarget.dataset.id + '&type=1',
     })
   },
   goDao:function(e) {
     var that = this;
     wx.navigateTo({
-      url: '../yin/yin?id=' + e.target.dataset.id + '&type=1' + '&parId=' + that.data.id,
+      url: '../yin/yin?id=' + e.currentTarget.dataset.id + '&type=1' + '&parId=' + that.data.id,
     })
   },
   goYin:function(e) {
     var that = this;
-    if (e.target.dataset.index == 0 && that.data.status == 0) {//没购买且是第一个子集
+    if (e.currentTarget.dataset.index == 0 && that.data.status == 0) {//没购买且是第一个子集
       wx.navigateTo({
-        url: '../yin/yin?id=' + e.target.dataset.id + '&type=2' + '&parId=' + that.data.id + '&status=' + that.data.status + '&detailtype=' + e.target.dataset.detailtype,
+        url: '../yin/yin?id=' + e.currentTarget.dataset.id + '&type=2' + '&parId=' + that.data.id + '&status=' + that.data.status + '&detailtype=' + e.currentTarget.dataset.detailtype,
       })
-    } else if (e.target.dataset.index !== 0 && that.data.status == 0){
+    } else if (e.currentTarget.dataset.index !== 0 && that.data.status == 0){
       wx.showToast({
         title: '请先购买',
         icon: 'none',
@@ -713,7 +713,7 @@ Page({
       })
     } else if (that.data.status == 1) {
       wx.navigateTo({
-        url: '../yin/yin?id=' + e.target.dataset.id + '&type=2' + '&parId=' + that.data.id + '&detailtype=' + e.target.dataset.detailtype,
+        url: '../yin/yin?id=' + e.currentTarget.dataset.id + '&type=2' + '&parId=' + that.data.id + '&detailtype=' + e.currentTarget.dataset.detailtype,
       })
     } 
     
@@ -728,7 +728,7 @@ Page({
       url: 'https://kip.sharetimes.cn/interface/party-coupon',
       method: 'POST',
       data: {
-        hui_id:e.target.dataset.id,
+        hui_id:e.currentTarget.dataset.id,
         openid: wx.getStorageSync('openId')
       },
       header: {

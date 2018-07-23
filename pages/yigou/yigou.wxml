@@ -2,12 +2,12 @@
 <scroll-view>
 <block wx:for="{{arr}}" wx:key="yigou">
   <view class='yigou' bindtap='goDetail' data-type='{{item.goods_type}}' data-id='{{item.goods_id}}'>
-    <view class='yigou-con' data-type='{{item.goods_type}}' data-id='{{item.goods_id}}'>
-      <image src='{{item.recommend_img}}' data-type='{{item.goods_type}}' data-id='{{item.goods_id}}'></image>
-      <view data-type='{{item.goods_type}}' data-id='{{item.goods_id}}'>{{item.title}}</view>
-      <view data-type='{{item.goods_type}}' data-id='{{item.goods_id}}'>{{item.vice_title}}</view>
+    <view class='yigou-con'>
+      <image src='{{item.recommend_img}}'></image>
+      <view>{{item.title}}</view>
+      <view>{{item.vice_title}}</view>
       <!-- <view>已更新<text>9</text>期 | <text>34</text>人购买</view> -->
-      <view data-type='{{item.goods_type}}' data-id='{{item.goods_id}}'>购买于{{time[index]}}</view>
+      <view>购买于{{time[index]}}</view>
     </view>
   </view>
 </block>

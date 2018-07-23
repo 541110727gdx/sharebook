@@ -56,7 +56,7 @@ Page({
   goDetail:function(e) {
     console.log(e)
     wx.navigateTo({
-      url: '../detail/detail?id=' + e.target.dataset.id + '&type=' + e.target.dataset.type
+      url: '../detail/detail?id=' + e.currentTarget.dataset.id + '&type=' + e.currentTarget.dataset.type
     })
   }
 })

@@ -125,15 +125,15 @@ Page({
     }
   },
   bannerJump:function(e) {
-    if (e.target.dataset.id == 1) {//跳转精读
+    if (e.currentTarget.dataset.id == 1) {//跳转精读
       wx.navigateTo({
-        url: '../detail/detail?id=' + e.target.dataset.care + '&type=1'
+        url: '../detail/detail?id=' + e.currentTarget.dataset.care + '&type=1'
       })
-    } else if (e.target.dataset.id == 2) {//跳转笔记
+    } else if (e.currentTarget.dataset.id == 2) {//跳转笔记
       wx.navigateTo({
-        url: '../detail/detail?id=' + e.target.dataset.int + '&type=2'
+        url: '../detail/detail?id=' + e.currentTarget.dataset.int + '&type=2'
       })
-    } else if (e.target.dataset.id == 4) {
+    } else if (e.currentTarget.dataset.id == 4) {
       wx.showModal({
         title: '提示',
         confirmText: '复制',
@@ -141,7 +141,7 @@ Page({
         success: function (res) {
           if (res.confirm) {
             wx.setClipboardData({
-              data: e.target.dataset.src,
+              data: e.currentTarget.dataset.src,
               success: function (res) {
                 wx.getClipboardData({
                   success: function (res) {
@@ -159,7 +159,7 @@ Page({
   }, 
   goDetail:function(e) {
     wx.navigateTo({
-      url: '../detail/detail?id=' + e.target.dataset.id + '&type=' + e.target.dataset.type + '&ifShare=2'
+      url: '../detail/detail?id=' + e.currentTarget.dataset.id + '&type=' + e.currentTarget.dataset.type + '&ifShare=2'
     })
   },
   backMusic:function() {

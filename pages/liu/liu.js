@@ -25,12 +25,12 @@ Page({
   },
   changColor: function (e) {
     this.setData({
-      key: e.target.dataset.index,
-      card_name: e.target.dataset.card_name,
-      card_code: e.target.dataset.card_code,
-      pay_amount: e.target.dataset.money,
-      amount_payable: e.target.dataset.card_value,
-      discount: e.target.dataset.min_discount
+      key: e.currentTarget.dataset.index,
+      card_name: e.currentTarget.dataset.card_name,
+      card_code: e.currentTarget.dataset.card_code,
+      pay_amount: e.currentTarget.dataset.money,
+      amount_payable: e.currentTarget.dataset.card_value,
+      discount: e.currentTarget.dataset.min_discount
     })
   },
   bindPhone:function(e) {

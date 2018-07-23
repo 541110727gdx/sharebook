@@ -19,12 +19,12 @@
   <view class="list">
     <block wx:for="{{carefully}}" wx:for-item="care" wx:key="care">
     <view wx:if='{{index < 3}}' class='list-con' data-id='{{care.id}}' data-type='1' bindtap='goDetail'>
-      <image data-id='{{care.id}}' data-type='1'  src='{{care.recommend_img}}'></image>
-      <view data-id='{{care.id}}' data-type='1' >{{care.title}}</view>
-      <view data-id='{{care.id}}' data-type='1' >{{care.vice_title}}</view>
-      <view data-id='{{care.id}}' data-type='1' >已更新<text>{{care.updates}}</text>期 | <text>{{care.purchase_number}}</text>人购买
-        <text wx:if='{{care.owner_status == null}}' data-id='{{care.id}}' data-type='1' class="price">￥<text>{{care.price}}</text></text>
-        <text wx:if='{{care.owner_status == 1}}' data-id='{{care.id}}' data-type='1' class="price">已购买</text>
+      <image src='{{care.recommend_img}}'></image>
+      <view>{{care.title}}</view>
+      <view>{{care.vice_title}}</view>
+      <view>已更新<text>{{care.updates}}</text>期 | <text>{{care.purchase_number}}</text>人购买
+        <text wx:if='{{care.owner_status == null}}'class="price">￥<text>{{care.price}}</text></text>
+        <text wx:if='{{care.owner_status == 1}}'class="price">已购买</text>
       </view>
     </view>
     </block>
@@ -41,12 +41,12 @@
   <view class="list">
     <block wx:for="{{intensive}}" wx:for-item="int" wx:key="int">
     <view wx:if='{{index < 3}}' class='list-con' data-id='{{int.id}}' data-type='2' bindtap='goDetail'>
-      <image data-id='{{int.id}}' data-type='2'  src='{{int.recommend_img}}'></image>
-      <view data-id='{{int.id}}' data-type='2' >{{int.title}}</view>
-      <view data-id='{{int.id}}' data-type='2' >{{int.vice_title}}</view>
+      <image src='{{int.recommend_img}}'></image>
+      <view>{{int.title}}</view>
+      <view>{{int.vice_title}}</view>
         <view>
-        <text wx:if='{{int.owner_status == null}}' data-id='{{int.id}}' data-type='2' class="price">￥<text>{{int.price}}</text></text>
-        <text wx:if='{{int.owner_status == 1}}' data-id='{{int.id}}' data-type='2' class="price">已购买</text>
+        <text wx:if='{{int.owner_status == null}}'class="price">￥<text>{{int.price}}</text></text>
+        <text wx:if='{{int.owner_status == 1}}'class="price">已购买</text>
       </view> 
     </view>
     </block>
@@ -63,12 +63,12 @@
   <view class="list">
     <block wx:for="{{read}}" wx:for-item="read" wx:key="read">
     <view wx:if='{{index < 3}}' class='list-con' data-id='{{read.id}}' data-type='3' bindtap='goDetail'>
-      <image src='{{read.recommend_img}}' data-id='{{read.id}}' data-type='3'></image>
-      <view data-id='{{read.id}}' data-type='3'>{{read.title}}</view>
-      <view data-id='{{read.id}}' data-type='3'>{{read.vice_title}}</view>
-      <view data-id='{{read.id}}' data-type='3'>已更新<text>{{read.updates}}</text>期 | <text>{{read.purchase_number}}</text>人购买
-         <text wx:if='{{read.owner_status == null}}' data-id='{{read.id}}' data-type='3' class="price">￥<text>{{read.price}}</text></text>
-        <text wx:if='{{read.owner_status == 1}}' data-id='{{read.id}}' data-type='3' class="price">已购买</text>
+      <image src='{{read.recommend_img}}'></image>
+      <view>{{read.title}}</view>
+      <view>{{read.vice_title}}</view>
+      <view>已更新<text>{{read.updates}}</text>期 | <text>{{read.purchase_number}}</text>人购买
+         <text wx:if='{{read.owner_status == null}}' class="price">￥<text>{{read.price}}</text></text>
+        <text wx:if='{{read.owner_status == 1}}' class="price">已购买</text>
       </view>
     </view>
     </block>

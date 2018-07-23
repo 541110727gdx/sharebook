@@ -105,15 +105,15 @@ Page({
     }
   },
   goJump:function(e) {
-    if (e.target.dataset.jump == 1) {//跳转精读
+    if (e.currentTarget.dataset.jump == 1) {//跳转精读
       wx.navigateTo({
-        url: '../detail/detail?id=' + e.target.dataset.care + '&type=1'
+        url: '../detail/detail?id=' + e.currentTarget.dataset.care + '&type=1'
       })
-    } else if (e.target.dataset.jump == 2) {//跳转笔记
+    } else if (e.currentTarget.dataset.jump == 2) {//跳转笔记
       wx.navigateTo({
-        url: '../detail/detail?id=' + e.target.dataset.int + '&type=2'
+        url: '../detail/detail?id=' + e.currentTarget.dataset.int + '&type=2'
       })
-    } else if (e.target.dataset.jump == 4) {
+    } else if (e.currentTarget.dataset.jump == 4) {
       wx.showModal({
         title: '提示',
         confirmText:'复制',
@@ -121,7 +121,7 @@ Page({
         success: function (res) {
           if (res.confirm) {
             wx.setClipboardData({
-              data: e.target.dataset.src,
+              data: e.currentTarget.dataset.src,
               success: function (res) {
                 // wx.getClipboardData({
                 //   success: function (res) {

@@ -11,13 +11,13 @@
       <block wx:for='{{dis.not_used}}' wx:key='hui'>
     <view class='dis-con'>
         <view class='youhui-main' bindtap='ling' data-id='{{item.id}}'>
-          <view class='youhui-con' data-id='{{item.id}}'>
-            <text class='you-name' data-id='{{item.id}}'>{{item.coupon_name}}</text>
-            <text class='you-time' data-id='{{item.id}}'>有效期至{{time[index]}}</text>
+          <view class='youhui-con'>
+            <text class='you-name'>{{item.coupon_name}}</text>
+            <text class='you-time'>有效期至{{time[index]}}</text>
           </view>
-          <view class='li' data-id='{{item.id}}'>
-            <view data-id='{{item.id}}'>立减{{item.denomination}}元</view>
-            <view  data-id='{{item.id}}' hidden='{{item.working_conditions == 0?true:false}}'>满{{item.working_condition}}元可用</view>
+          <view class='li'>
+            <view>立减{{item.denomination}}元</view>
+            <view hidden='{{item.working_conditions == 0?true:false}}'>满{{item.working_condition}}元可用</view>
           </view>
         </view>
     </view>
@@ -29,13 +29,13 @@
       <block wx:for='{{dis.used}}' wx:key='hui'>
     <view class='dis-con'>
         <view class='youhui-main' bindtap='ling' data-id='{{item.id}}'>
-          <view class='youhui-con' data-id='{{item.id}}'>
-            <text class='you-name' data-id='{{item.id}}'>{{item.coupon_name}}</text>
-            <text class='you-time' data-id='{{item.id}}'>有效期至{{time[index]}}</text>
+          <view class='youhui-con'>
+            <text class='you-name'>{{item.coupon_name}}</text>
+            <text class='you-time'>有效期至{{time[index]}}</text>
           </view>
-          <view class='li' data-id='{{item.id}}'>
-            <view data-id='{{item.id}}'>立减{{item.denomination}}元</view>
-            <view  data-id='{{item.id}}' hidden='{{item.working_conditions == 0?true:false}}'>满{{item.working_condition}}元可用</view>
+          <view class='li'>
+            <view>立减{{item.denomination}}元</view>
+            <view hidden='{{item.working_conditions == 0?true:false}}'>满{{item.working_condition}}元可用</view>
           </view>
         </view>
     </view>
@@ -47,13 +47,13 @@
       <block wx:for='{{dis.expire}}' wx:key='hui'>
     <view class='dis-con'>
         <view class='youhui-main guoqi' bindtap='ling' data-id='{{item.id}}'>
-          <view class='youhui-con' data-id='{{item.id}}'>
-            <text class='you-name' data-id='{{item.id}}'>{{item.coupon_name}}</text>
-            <text class='you-time' data-id='{{item.id}}'>有效期至{{time[index]}}</text>
+          <view class='youhui-con'>
+            <text class='you-name'>{{item.coupon_name}}</text>
+            <text class='you-time'>有效期至{{time[index]}}</text>
           </view>
-          <view class='li' data-id='{{item.id}}'>
-            <view data-id='{{item.id}}'>立减{{item.denomination}}元</view>
-            <view  data-id='{{item.id}}' hidden='{{item.working_conditions == 0?true:false}}'>满{{item.working_condition}}元可用</view>
+          <view class='li'>
+            <view>立减{{item.denomination}}元</view>
+            <view hidden='{{item.working_conditions == 0?true:false}}'>满{{item.working_condition}}元可用</view>
           </view>
         </view>
     </view>

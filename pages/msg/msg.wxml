@@ -4,11 +4,11 @@
       <view class="msg-con">
         <block wx:for='{{msg}}' wx:for-item='msg' wx:key='msg'>
           <view class="msg-list" data-jump='{{msg.jump_type}}' data-care='{{msg.carefully_id}}' data-int='{{msg.intensive_id}}' data-src='{{msg.url}}' bindtap='goJump'>
-            <image data-jump='{{msg.jump_type}}' data-care='{{msg.carefully_id}}' data-int='{{msg.intensive_id}}' data-src='{{msg.url}}'  src='../../img/yes-p.png'></image>
-            <view data-jump='{{msg.jump_type}}' data-care='{{msg.carefully_id}}' data-int='{{msg.intensive_id}}' data-src='{{msg.url}}' >{{msg.push_user}}</view>
-            <view data-jump='{{msg.jump_type}}' data-care='{{msg.carefully_id}}' data-int='{{msg.intensive_id}}' data-src='{{msg.url}}' >
-              <text data-jump='{{msg.jump_type}}' data-care='{{msg.carefully_id}}' data-int='{{msg.intensive_id}}' data-src='{{msg.url}}'  class="text1">{{msg.receive_content}}</text>
-              <text data-jump='{{msg.jump_type}}' data-care='{{msg.carefully_id}}' data-int='{{msg.intensive_id}}' data-src='{{msg.url}}'  class="text2">{{time[index]}}</text>
+            <image src='../../img/yes-p.png'></image>
+            <view>{{msg.push_user}}</view>
+            <view>
+              <text class="text1">{{msg.receive_content}}</text>
+              <text class="text2">{{time[index]}}</text>
             </view>
           </view>
         </block>
