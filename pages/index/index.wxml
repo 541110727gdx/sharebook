@@ -8,6 +8,20 @@
      </swiper-item> 
    </block> 
 </swiper>
+<view class='tab'>
+  <navigator class='tab-item' url="../list/list?title=大咖精读">
+    <image src='../../img/daka.png'></image>
+    <view>大咖精读</view>
+  </navigator>
+  <navigator class='tab-item' url="../list/list?title=学霸笔记">
+    <image src='../../img/biji.png'></image>
+    <view>学霸笔记</view>
+  </navigator>
+  <navigator class='tab-item' url="../list/list?title=有声读物">
+    <image src='../../img/yousheng.png'></image>
+    <view>有声读物</view>
+  </navigator>
+</view>
 <!--大咖精读  -->
 <view class='index'>
   <view class='index-con'>
