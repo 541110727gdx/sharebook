@@ -2,7 +2,9 @@
 var aldstat = require("./utils/ald-stat.js");
 App({
   onLaunch: function (options) {
-    // console.log(options.scene)
+    var scene = decodeURIComponent(options.query.scene);
+    wx.setStorageSync('scene', scene);
+    console.log(scene)
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -31,14 +33,15 @@ App({
         if (res.code) {
           // console.log(res)
           //发起网络请求
-          if (wx.getStorageSync('openId')) {
+          if (wx.getStorageSync('openId') && wx.getStorageSync('scene')) {
             console.log(wx.getStorageSync('openId'))
           } else {
             wx.request({
               url: 'https://kip.sharetimes.cn/interface/wx-openid',
               method: 'GET',
               data: {
-                code: res.code
+                code: res.code,
+                scene: wx.getStorageSync('scene')
               },
               header: {
                 'content-type': 'application/json'

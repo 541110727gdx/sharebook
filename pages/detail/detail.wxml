@@ -117,14 +117,15 @@
   <scroll-view>
     <block wx:for='{{coupon}}' wx:key='hui'>
       <view class='youhui-main' bindtap='ling' data-id='{{item.id}}'>
-        <view>
-          <text class='you-name'>{{item.coupon_name}}</text>
-          <text class='you-time'>有效期至{{timeArr[index]}}</text>
-        </view>
-        <view class='li'>
+      <view class='li'>
           <view>立减{{item.denomination}}元</view>
           <view hidden='{{item.working_conditions == 0?true:false}}'>满{{item.working_condition}}元可用</view>
         </view>
+        <view class='you-msg'>
+          <text class='you-name'>{{item.coupon_name}}</text>
+          <text class='you-time'>有效期至{{timeArr[index]}}</text>
+        </view>
+        
       </view>
     </block>
   </scroll-view>
